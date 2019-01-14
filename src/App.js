@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import SectionLogin from './login.js'
-import { Provider } from 'react-redux'
-import store from './store.js'
+import { Router } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router'
+import history from './state/history'
+import login from './views/login'
 
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <div>
-          <h1>Welcome to Itty Bizzy</h1>
-          <SectionLogin />
-        </div>
-     </Provider >
+      <Router history={history}>
+        <Switch>
+          <Route path="/" component={login} />} />
+        </Switch>
+      </Router>
     );
   }
 }
