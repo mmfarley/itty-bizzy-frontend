@@ -1,1 +1,4 @@
 //export const ACTION_TYPE = 'ACTION_TYPE'
+
+export const MAKE_TEST_FALSE = 'MAKE_TEST_FALSE'
+export const MAKE_TEST_TRUE = 'MAKE_TEST_TRUE'
