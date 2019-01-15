@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { login } from '../state/actions/actions'
+import { login, logout } from '../state/actions/actions'
 import { connect } from 'react-redux';
 import history from "../state/history";
 
@@ -38,7 +38,7 @@ class _Login extends Component {
                         onChange={this.handleOnChange}
                     />
                     <button type="submit">Login</button>
-                </form>            
+                </form>           
             </div>
         )
     }

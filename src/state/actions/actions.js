@@ -25,10 +25,7 @@ export const login = (loggingUser) => {
             body: JSON.stringify(loggingUser)
         })
             .then(resp => resp.json())
-            .then(user => {
-                console.log(user)
-                dispatch({ type: LOGIN_USER, payload: user })
-            })
+            .then(user => dispatch({ type: LOGIN_USER, payload: user }))
     }
 }
 
