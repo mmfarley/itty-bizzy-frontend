@@ -66,8 +66,19 @@ class _Login extends Component {
                             color="primary"
                         >
                             Login
-            </Button>
+                        </Button>
                     </form>
+                    <br />
+                    <Button
+                        onClick={() => {
+                            history.push("/signup")
+                        }}
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                    >
+                        Not a user? Sign Up
+                    </Button>
                 </Paper>
             </main>
         );

@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { logout } from '../state/actions/actions'
-import teal from '@material-ui/core/colors/teal';
 
 const styles = {
     root: {

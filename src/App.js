@@ -4,8 +4,8 @@ import { Switch, Route, Redirect } from 'react-router'
 import history from './state/history'
 import { Login } from './components/login'
 import { NavBar } from './components/navbar'
-// import Signup from './components/signup'
-import { Test } from './components/test'
+import { Signup } from './components/signup'
+import Welcome from './components/welcome'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -23,10 +23,10 @@ class App extends Component {
             <div>
               <NavBar />
               <Switch>
-                {/* <Route path="/" component={Welcome} />} */}
-                <Route path="/login" component={Login} />} />
-                {/* <Route path="/signup" component={Signup} />} */}
-                {/* <Route exact path="/userDash" />} /> */}
+                <Route exact path="/" component={Welcome} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/userDash" render={() => {/* if statement using user token, if user go to dash, if not go to login */}} />
               </Switch>
             </div>
           </MuiThemeProvider>
