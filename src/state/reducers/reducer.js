@@ -1,5 +1,11 @@
 // import history from './history'
-import { MAKE_TEST_FALSE, MAKE_TEST_TRUE, LOGIN_USER, LOGOUT_USER, SIGNUP_USER } from '../actions/types';
+import { MAKE_TEST_FALSE, 
+    MAKE_TEST_TRUE, 
+    LOGIN_USER, 
+    LOGOUT_USER, 
+    SIGNUP_USER, 
+    GET_MESSAGES, 
+    SEND_MESSAGE } from '../actions/types';
 
 export const reducer = function (currentState, action) {
     const newState = { ...currentState }
@@ -22,6 +28,13 @@ export const reducer = function (currentState, action) {
             break;
         case SIGNUP_USER:
             console.log(action.payload)
+            break;
+
+        case GET_MESSAGES:
+            console.log("GET MESSAGE")
+            break;
+        case SEND_MESSAGE:
+            console.log("SEND MESSAGE")
             break;
     }
     return newState

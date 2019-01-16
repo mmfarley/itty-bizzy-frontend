@@ -1,4 +1,12 @@
-import { MAKE_TEST_FALSE, MAKE_TEST_TRUE, LOGIN_USER, LOGOUT_USER, SIGNUP_USER } from "./types";
+import {
+    MAKE_TEST_FALSE,
+    MAKE_TEST_TRUE,
+    LOGIN_USER,
+    LOGOUT_USER,
+    SIGNUP_USER,
+    GET_MESSAGES,
+    SEND_MESSAGE
+} from "./types";
 
 
 
@@ -29,11 +37,6 @@ export const login = (loggingUser) => {
     }
 }
 
-export const logout = () => {
-    return {
-        type: LOGOUT_USER
-    }
-}
 
 export const signup = (loggingUser) => {
     return function (dispatch) {
@@ -47,5 +50,23 @@ export const signup = (loggingUser) => {
         })
             .then(resp => resp.json())
             .then(user => dispatch({ type: SIGNUP_USER, payload: user }))
+    }
+}
+
+export const logout = () => {
+    return {
+        type: LOGOUT_USER
+    }
+}
+
+export const getMessages = () => {
+    return {
+        type: GET_MESSAGES
+    }
+}
+
+export const sendMessage = () => {
+    return {
+        type: SEND_MESSAGE
     }
 }
