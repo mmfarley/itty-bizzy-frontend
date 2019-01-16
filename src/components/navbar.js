@@ -33,15 +33,32 @@ function _NavBar(props) {
                     <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" color="inherit" className={classes.grow}>
+                    <Typography onClick={() => {
+                        history.push('/user-dash')
+                    }} variant="h6" color="inherit" className={classes.grow}>
                         Itty Bizzy
           </Typography>
+                    <Button
+                        onClick={() => {
+                            history.push('/my-biz-dash')
+                        }}
+                        color="inherit">My Itty Biz</Button>
+                    <Button
+                        onClick={() => {
+                            history.push('/invoices')
+                        }}
+                        color="inherit">Invoices</Button>
+                    <Button
+                        onClick={() => {
+                            history.push('/messages')
+                        }}
+                        color="inherit">Messages</Button>
                     <Button 
-                    onClick={() => {
-                        props.logout()
-                        history.push('/')
-                    }} 
-                    color="inherit">Logout</Button>
+                        onClick={() => {
+                            props.logout()
+                            history.push('/')
+                        }} 
+                        color="inherit">Logout</Button>
                     <Button
                         onClick={() => {
                             history.push('/login')

@@ -35,8 +35,17 @@ export const logout = () => {
     }
 }
 
-export const signup = () => {
-    return {
-        type: SIGNUP_USER
+export const signup = (loggingUser) => {
+    return function (dispatch) {
+        fetch('http://localhost:3000/api/v1/users', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(loggingUser)
+        })
+            .then(resp => resp.json())
+            .then(user => dispatch({ type: SIGNUP_USER, payload: user }))
     }
 }

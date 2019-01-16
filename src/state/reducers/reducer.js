@@ -21,7 +21,7 @@ export const reducer = function (currentState, action) {
             newState.currentUser = null
             break;
         case SIGNUP_USER:
-            
+            console.log(action.payload)
             break;
     }
     return newState

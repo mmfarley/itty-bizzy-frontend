@@ -3,15 +3,15 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-class Welcome extends Component {
+class Invoices extends Component {
 
     render() {
-        
+
         return (
             <div>
                 <CssBaseline />
                 <Paper>
-                    <Typography>Welcome to Itty Bizzy</Typography>
+                    <Typography>These are your invoices</Typography>
                 </Paper>
             </div>
         );
@@ -19,4 +19,4 @@ class Welcome extends Component {
 }
 
 
-export default Welcome;
+export default Invoices;
