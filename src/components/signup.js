@@ -1,6 +1,5 @@
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -37,9 +36,8 @@ class _Signup extends Component {
 
     render() {
         return (
-            <main >
-                <CssBaseline />
-                <Paper style={{ padding: 20, margin: 200 }} align="center">
+            <div align="center">
+                <Paper style={{ padding: 40, margin: 100, maxWidth: 420 }} align="center">
                     <Avatar >
                         <AddIcon />
                     </Avatar>
@@ -73,7 +71,7 @@ class _Signup extends Component {
             </Button>
                     </form>
                 </Paper>
-            </main>
+            </div>
         );
     }
 }

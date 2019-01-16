@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import MessageCard from './messagecard'
 
 class Messages extends Component {
 
@@ -9,9 +10,16 @@ class Messages extends Component {
 
         return (
             <div>
-                <CssBaseline />
-                <Paper>
-                    <Typography>These are your messages</Typography>
+                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                    <Typography variant="h5">These are your messages</Typography>
+                    <Grid container spacing={24} style={{ padding: 24 }}>
+                        <Grid item xs={12} sm={6} lg={4} xl={3}>
+                            <MessageCard />
+                        </Grid>
+                        <Grid item xs={12} sm={6} lg={4} xl={3}>
+                            <MessageCard />
+                        </Grid>
+                    </Grid>
                 </Paper>
             </div>
         );

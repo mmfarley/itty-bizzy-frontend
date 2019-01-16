@@ -6,3 +6,9 @@ export const MAKE_TEST_TRUE = 'MAKE_TEST_TRUE'
 export const LOGIN_USER = 'LOGIN_USER'
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const SIGNUP_USER = 'SIGNUP_USER'
+
+export const GET_MESSAGES = 'GET_MESSAGES'
+export const SEND_MESSAGE = 'SEND_MESSAGE'
+
+export const GET_BILLS = 'GET_BILLS'
+export const SEND_BILL = 'SEND_BILL'

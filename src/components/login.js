@@ -1,6 +1,5 @@
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -37,9 +36,8 @@ class _Login extends Component {
 
     render() {
         return (
-            <main >
-                <CssBaseline />
-                <Paper style={{ padding: 20, margin: 200}} align="center">
+            <div align="center">
+                <Paper style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
                     <Avatar >
                         <LockOutlinedIcon />
                     </Avatar>
@@ -77,10 +75,10 @@ class _Login extends Component {
                         variant="contained"
                         color="primary"
                     >
-                        Not a user? Sign Up
+                        Don't have an account? Sign Up
                     </Button>
                 </Paper>
-            </main>
+            </div>
         );
     }
 }
