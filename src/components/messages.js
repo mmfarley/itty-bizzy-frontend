@@ -25,8 +25,7 @@ class _Messages extends Component {
         if (this.props.conversations){
         return this.props.conversations.map((conversation) => (
             <Grid item xs={12} sm={6} lg={4} xl={3}>
-                <h1>a conversation</h1>
-                <MessageCard conversation={conversation} />
+                <MessageCard conversation={conversation.conversation} messaged_user={conversation.messaged_user}/>
             </Grid>
         ))}
     }
@@ -36,7 +35,7 @@ class _Messages extends Component {
         return (
             <div>
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
-                    <Typography variant="h5">These are your messages</Typography>
+                    <Typography color="textSecondary" variant="h5">Your Messages</Typography>
                     <Grid container spacing={24} style={{ padding: 24 }}>
                         {this.generateMessageCards()}
                     </Grid>
