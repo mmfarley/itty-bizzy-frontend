@@ -4,7 +4,8 @@ import {
     LOGIN_USER,
     LOGOUT_USER,
     GET_CONVERSATIONS,
-    SEND_MESSAGE
+    SEND_MESSAGE,
+    SET_USER
 } from "./types";
 
 
@@ -73,5 +74,11 @@ export const getConversations = (user_id) => {
 export const sendMessage = () => {
     return {
         type: SEND_MESSAGE
+    }
+}
+
+export const setUser = () => {
+    return {
+        type: SET_USER
     }
 }

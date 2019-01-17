@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router } from 'react-router-dom'
 import { Switch, Route, Redirect } from 'react-router'
-import history from './state/history'
+import history, { redirect } from './state/history'
 import { Login } from './components/login'
 import { NavBar } from './components/navbar'
 import { Signup } from './components/signup'
@@ -11,18 +11,21 @@ import MyBizDash from './components/mybizdash'
 import Invoices from './components/invoices'
 import Welcome from './components/welcome'
 import { connect } from 'react-redux'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { PrivateRoute } from './components/privateroute'
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import theme from './components/theme'
+import { setUser } from './state/actions/actions'
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: '#009688' },
-    secondary: { main: '#212121' }
-  }
-});
-
-//component will mount check local storage for token, if token, send it to backend,
 
 class App extends Component {
+
+  componentWillMount(){
+    if(localStorage.getItem("user")){
+      this.props.setUser()
+      redirect(history.location)
+    }
+  }
+
   render() {
     return (
         <Router history={history}>
@@ -45,18 +48,6 @@ class App extends Component {
   }
 }
 
-const _PrivateRoute = ({ component: Component, currentUser, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    currentUser
-      ? <Component {...props} />
-      : <Redirect to='/login' />
-  )} />
-)
 
-const mapStateToProps = (state) => ({
-  currentUser: state.currentUser
-})
 
-const PrivateRoute = connect(mapStateToProps)(_PrivateRoute)
-
-export default App;
+export default connect(null, { setUser })(App);

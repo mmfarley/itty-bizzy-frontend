@@ -5,7 +5,9 @@ import { MAKE_TEST_FALSE,
     LOGIN_USER, 
     LOGOUT_USER,
     GET_CONVERSATIONS, 
-    SEND_MESSAGE } from '../actions/types';
+    SEND_MESSAGE,
+    SET_USER
+ } from '../actions/types';
 
 export const reducer = function (currentState, action) {
     const newState = { ...currentState }
@@ -20,13 +22,17 @@ export const reducer = function (currentState, action) {
 
         case LOGIN_USER:
             localStorage.setItem("token", action.payload.token)
-            newState.currentUser = action.payload
+            localStorage.setItem("user", JSON.stringify(action.payload.user))
+            newState.currentUser = action.payload.user
             redirect('/user-dash')
             break;
         case LOGOUT_USER:
             localStorage.clear()
             newState.currentUser = null
             break;
+        case SET_USER:
+            newState.currentUser = JSON.parse(localStorage.getItem("user"))
+        break;
         case GET_CONVERSATIONS:
             console.log("GET_CONVERSATIONS", action.payload)
             newState.conversations = action.payload.conversations

@@ -12,3 +12,5 @@ export const SEND_MESSAGE = 'SEND_MESSAGE'
 
 export const GET_BILLS = 'GET_BILLS'
 export const SEND_BILL = 'SEND_BILL'
+
+export const SET_USER = 'SET_USER'

@@ -8,10 +8,17 @@ import { getConversations } from '../state/actions/actions'
 
 class _Messages extends Component {
 
+    componentDidMount(){
+        this.updateMessages()
+    }
+
     componentWillMount() {
         console.log("component mounted")
         this.props.getConversations(this.props.user.id)
         
+    }
+    updateMessages = () => {
+        setInterval(() => this.props.getConversations(this.props.user.id), 5000)
     }
 
     generateMessageCards = () => {
@@ -23,6 +30,7 @@ class _Messages extends Component {
             </Grid>
         ))}
     }
+
 
     render() {
         return (
