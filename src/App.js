@@ -10,6 +10,7 @@ import {Messages} from './components/messages'
 import MyBizDash from './components/mybizdash'
 import Invoices from './components/invoices'
 import Welcome from './components/welcome'
+import { connect } from 'react-redux'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -18,6 +19,8 @@ const theme = createMuiTheme({
     secondary: { main: '#212121' }
   }
 });
+
+//component will mount check local storage for token, if token, send it to backend,
 
 class App extends Component {
   render() {
@@ -30,10 +33,10 @@ class App extends Component {
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
-                <Route exact path="/user-dash" component={UserDash} />
-                <Route exact path="/messages" component={Messages} />
-                <Route exact path="/my-biz-dash" component={MyBizDash} />
-                <Route exact path="/invoices" component={Invoices} />
+                <PrivateRoute exact path="/user-dash" component={UserDash} />
+                <PrivateRoute exact path="/messages" component={Messages} />
+                <PrivateRoute exact path="/my-biz-dash" component={MyBizDash} />
+                <PrivateRoute exact path="/invoices" component={Invoices} />
               </Switch>
             </div>
           </MuiThemeProvider>
@@ -42,6 +45,18 @@ class App extends Component {
   }
 }
 
-export default App;
+const _PrivateRoute = ({ component: Component, currentUser, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    currentUser
+      ? <Component {...props} />
+      : <Redirect to='/login' />
+  )} />
+)
 
-/* <Route exact path="/userDash" render={() => {/* if statement using user token, if user go to dash, if not go to login */ 
+const mapStateToProps = (state) => ({
+  currentUser: state.currentUser
+})
+
+const PrivateRoute = connect(mapStateToProps)(_PrivateRoute)
+
+export default App;

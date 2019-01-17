@@ -3,7 +3,6 @@ import {
     MAKE_TEST_TRUE,
     LOGIN_USER,
     LOGOUT_USER,
-    SIGNUP_USER,
     GET_CONVERSATIONS,
     SEND_MESSAGE
 } from "./types";
@@ -49,7 +48,7 @@ export const signup = (loggingUser) => {
             body: JSON.stringify(loggingUser)
         })
             .then(resp => resp.json())
-            .then(user => dispatch({ type: SIGNUP_USER, payload: user }))
+            .then(user => dispatch({ type: LOGIN_USER, payload: user }))
     }
 }
 

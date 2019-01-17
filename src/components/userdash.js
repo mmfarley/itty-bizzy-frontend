@@ -14,7 +14,7 @@ class _UserDash extends Component {
     // }
 
     render() {
-
+        console.log('in here?')
         return (
             <div>
                 <CssBaseline />

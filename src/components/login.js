@@ -31,7 +31,7 @@ class _Login extends Component {
     handleOnSubmit = e => {
         e.preventDefault()
         this.props.login(this.state)
-        history.push('/user-dash')
+        // history.push('/user-dash')
     }
 
     render() {
