@@ -8,19 +8,20 @@ import { getConversations } from '../state/actions/actions'
 
 class _Messages extends Component {
 
-    componentDidMount() {
+    componentWillMount() {
         console.log("component mounted")
         this.props.getConversations(this.props.user.id)
         
     }
 
     generateMessageCards = () => {
-        console.log(this.props.conversations)
-        // this.props.conversations.each((conversation) => (
-        //     <Grid item xs={12} sm={6} lg={4} xl={3}>
-        //         <MessageCard conversation={conversation} />
-        //     </Grid>
-        // ))
+        if (this.props.conversations){
+        return this.props.conversations.map((conversation) => (
+            <Grid item xs={12} sm={6} lg={4} xl={3}>
+                <h1>a conversation</h1>
+                <MessageCard conversation={conversation} />
+            </Grid>
+        ))}
     }
 
     render() {
