@@ -37,7 +37,8 @@ function _NavBar(props) {
                         history.push('/user-dash')
                     }} variant="h6" color="inherit" className={classes.grow}>
                         Itty Bizzy
-          </Typography>
+                    </Typography>
+                    
                     <Button
                         onClick={() => {
                             history.push('/my-biz-dash')

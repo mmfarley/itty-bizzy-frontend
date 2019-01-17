@@ -9,12 +9,22 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import { sendMessage } from '../state/actions/actions'
+import { connect } from 'react-redux';
 
-class MessageCard extends Component {
+class _MessageCard extends Component {
 
     state = {
-        content: ''
+        content: '',
+        user_id: this.props.user.id,
+        messaged_user_id: this.props.messaged_user_id,
+        sent_at: new Date()
     }
+
+    // createMessageCard = () => {
+    //     <Card style={{ padding: 10, margin: 10 }} align="left">user</Card>
+    //     <Card style={{ padding: 10, margin: 10 }} align="right">other</Card>
+    // }
 
     handleOnChange = e => {
         this.setState({
@@ -27,6 +37,10 @@ class MessageCard extends Component {
         // this.props.login(this.state)
         // history.push('/user-dash')
     }
+
+    // componentDidMount(){
+    //     this.props.getConversationsAndMessagedUsers(this.state.user_id)
+    // }
 
     render() {
 
@@ -54,9 +68,9 @@ class MessageCard extends Component {
                                 <TextField 
                                 onChange={this.handleOnChange} 
                                 multiline 
-                                id="message" 
+                                id="content" 
                                 margin="normal"
-                                name="message" 
+                                name="content" 
                                 variant="outlined"/>
                             </FormControl>
                             <Button
@@ -74,7 +88,10 @@ class MessageCard extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    user: state.currentUser
+})
 
-export default MessageCard;
+export const MessageCard = connect(mapStateToProps, { sendMessage })(_MessageCard);
 
 

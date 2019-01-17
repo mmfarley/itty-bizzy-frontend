@@ -4,7 +4,7 @@ import {
     LOGIN_USER,
     LOGOUT_USER,
     SIGNUP_USER,
-    GET_MESSAGES,
+    GET_CONVERSATIONS,
     SEND_MESSAGE
 } from "./types";
 
@@ -59,9 +59,15 @@ export const logout = () => {
     }
 }
 
-export const getMessages = () => {
-    return {
-        type: GET_MESSAGES
+export const getConversations = (user_id) => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/api/v1/messages/user/${user_id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(conversations => dispatch({ type: GET_CONVERSATIONS, payload: conversations }))
     }
 }
 

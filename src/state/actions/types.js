@@ -7,7 +7,7 @@ export const LOGIN_USER = 'LOGIN_USER'
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const SIGNUP_USER = 'SIGNUP_USER'
 
-export const GET_MESSAGES = 'GET_MESSAGES'
+export const GET_CONVERSATIONS = 'GET_CONVERSATIONS'
 export const SEND_MESSAGE = 'SEND_MESSAGE'
 
 export const GET_BILLS = 'GET_BILLS'
