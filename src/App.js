@@ -7,8 +7,8 @@ import { NavBar } from './components/navbar'
 import { Signup } from './components/signup'
 import {UserDash} from './components/userdash'
 import {Messages} from './components/messages'
-import MyBizDash from './components/mybizdash'
-import Invoices from './components/invoices'
+import BizDash from './components/bizdash'
+import FindBiz from './components/findbiz'
 import Welcome from './components/welcome'
 import { PrivateRoute } from './components/privateroute'
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -28,8 +28,8 @@ class App extends Component {
                 <Route exact path="/signup" component={Signup} />
                 <PrivateRoute exact path="/user-dash" component={UserDash} />
                 <PrivateRoute exact path="/messages" component={Messages} />
-                <PrivateRoute exact path="/my-biz-dash" component={MyBizDash} />
-                <PrivateRoute exact path="/invoices" component={Invoices} />
+                <PrivateRoute exact path="/biz-dash" component={BizDash} />
+                <PrivateRoute exact path="/find-biz" component={FindBiz} />
               </Switch>
             </div>
           </MuiThemeProvider>

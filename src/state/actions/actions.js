@@ -5,7 +5,11 @@ import {
     LOGOUT_USER,
     GET_CONVERSATIONS,
     SEND_MESSAGE,
-    SET_USER
+    MARK_AS_PAID,
+    GET_INVOICES,
+    EDIT_BIZ,
+    GET_BIZZYS,
+    GET_MY_BIZ
 } from "./types";
 
 
@@ -87,3 +91,74 @@ export const sendMessage = (message) => {
     }
 }
 
+export const markAsPaid = (id) => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/api/v1/bills/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ isPaid: true })//check this syntax
+        })
+            .then(resp => resp.json())
+            .then(() => dispatch({ type: MARK_AS_PAID }))
+    }
+}
+
+//make custom route for this. model after messages custom route
+export const getInvoices = (user_id) => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/api/v1/bills/user/${user_id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(invoices => dispatch({ type: GET_INVOICES, payload: invoices }))
+    }
+}
+
+export const editBiz = (business) => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/api/v1/businesses/${business.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify( business )
+        })
+            .then(resp => resp.json())
+            .then(business => dispatch({ type: EDIT_BIZ, payload: business }))
+    }
+}
+
+
+export const getBizzys = () => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/api/v1/businesses`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(bizzys => dispatch({ type: GET_BIZZYS, payload: bizzys }))
+    }
+}
+
+//make custom route for this. model after messages custom route. 
+//NOTE THAT RELATIONSHIP IS DIFFERENT. SHOULD BE EASIER
+export const getMyBiz = (id) => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/api/v1/businesses/user/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(myBiz => dispatch({ type: GET_MY_BIZ, payload: myBiz }))
+    }
+}

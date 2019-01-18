@@ -12,8 +12,7 @@ class _MessageCard extends Component {
     state = {
         content: '',
         user_id: this.props.user.id,
-        messaged_user_id: this.props.messaged_user.id,
-        sent_at: new Date()
+        messaged_user_id: this.props.messaged_user.id
     }
     createMessages = () => {
         return this.props.conversation.map((message) => {
@@ -55,7 +54,7 @@ class _MessageCard extends Component {
                         </Typography>
                     </Card>
                 </Typography>
-                <Card style={{ padding: 15, margin: 30, maxWidth: 500, maxHeight: 400, overflow: 'auto' }} align="center">
+                <Card style={{ padding: 15, margin: 30, maxWidth: 300, maxHeight: 400, "overflow-y": 'auto' }} align="center">
                     {this.createMessages()}
                     <form onSubmit={e => this.handleOnSubmit(e)} noValidate autoComplete="off">
                         <FormControl margin="normal" required fullWidth>

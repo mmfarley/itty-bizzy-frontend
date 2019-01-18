@@ -4,9 +4,12 @@ import { MAKE_TEST_FALSE,
     MAKE_TEST_TRUE, 
     LOGIN_USER, 
     LOGOUT_USER,
-    GET_CONVERSATIONS, 
-    SEND_MESSAGE,
-    SET_USER
+    GET_CONVERSATIONS,
+    MARK_AS_PAID,
+    GET_INVOICES,
+    EDIT_BIZ,
+    GET_BIZZYS,
+    GET_MY_BIZ
  } from '../actions/types';
 
 export const reducer = function (currentState, action) {
@@ -28,15 +31,29 @@ export const reducer = function (currentState, action) {
             break;
         case LOGOUT_USER:
             localStorage.clear()
-            newState.currentUser = null
+            newState = null
             break;
         case GET_CONVERSATIONS:
             newState.conversations = action.payload.conversations
             break;
-        case SEND_MESSAGE:
-            newState.conversations[0].conversation.push(action.payload)
-            console.log("SEND MESSAGE")
+        case MARK_AS_PAID:
+            console.log("MARK_AS_PAID ran")
             break;
+        case GET_INVOICES:
+            console.log("GET_INVOICES action.payload", action.payload)
+            break;
+        case GET_BIZZYS:
+            console.log("GET_BIZZYS action.payload", action.payload)
+            newState.bizzys = action.payload.bizzys
+        break;
+        case GET_MY_BIZ:
+            console.log("GET_MY_BIZ action.payoad", action.payload)
+            newState.myBiz = action.payload.myBiz
+        break;
+        case EDIT_BIZ:
+            console.log("EDIT_BIZ action.payload", action.payload)
+            newState.myBiz = action.payload
+        break;
     }
     return newState
 }

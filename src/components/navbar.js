@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { logout } from '../state/actions/actions'
+import Icon from '@material-ui/core/Icon';
 
 
 class _NavBar extends Component {
@@ -19,19 +20,18 @@ class _NavBar extends Component {
         if (localStorage.getItem("user")) {
             return(
                 <><Button
-                    onClick={() => {
-                        history.push('/my-biz-dash')
-                    }}
-                    color="inherit">My Itty Biz</Button>
-                <Button onClick={() => {
-                        history.push('/invoices')
-                    }}
-                    color="inherit">Invoices</Button>
+                    onClick={() => {history.push('/find-biz')}}
+                    color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>search</Icon>
+                </Button>
                 <Button
-                    onClick={() => {
-                        history.push('/messages')
-                    }}
-                    color="inherit">Messages</Button>
+                    onClick={() => {history.push('/biz-dash')}}
+                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>store</Icon></Button>
+                <Button
+                    onClick={() => {history.push('/messages')}}
+                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>forum</Icon></Button>
+                <Button
+                    onClick={() => {history.push('/user-dash')}}
+                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>home</Icon></Button>
                 <Button
                     onClick={() => {
                         this.props.logout()
@@ -51,12 +51,14 @@ class _NavBar extends Component {
     render() {
         return (
             <div >
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
                 <AppBar position="static">
                     <Toolbar>
                         <Typography style={{ flexGrow: 1 }} onClick={() => {
                             history.push('/user-dash')
                         }} variant="h5" color="inherit" >
                             Itty Bizzy
+                            <Icon color="inherit" style={{ fontSize: 20 }}>public</Icon>
                         </Typography>
                         {this.menuOptions()}
                     </Toolbar>

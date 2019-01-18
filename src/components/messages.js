@@ -17,8 +17,9 @@ class _Messages extends Component {
         this.props.getConversations(this.props.user.id)
         
     }
+    //CHANGE TO EVERY SECOND FOR PRESENTATION
     updateMessages = () => {
-        setInterval(() => this.props.getConversations(this.props.user.id), 5000)
+        setInterval(() => this.props.getConversations(this.props.user.id), 10000)
     }
 
     generateMessageCards = () => {

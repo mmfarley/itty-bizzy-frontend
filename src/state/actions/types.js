@@ -14,3 +14,10 @@ export const GET_BILLS = 'GET_BILLS'
 export const SEND_BILL = 'SEND_BILL'
 
 export const SET_USER = 'SET_USER'
+
+export const MARK_AS_PAID = 'MARK_AS_PAID'
+export const GET_INVOICES = 'GET_INVOICES'
+
+export const EDIT_BIZ = 'EDIT_BIZ'
+export const GET_BIZZYS = 'GET_BIZZYS'
+export const GET_MY_BIZ = 'GET_MY_BIZ'
