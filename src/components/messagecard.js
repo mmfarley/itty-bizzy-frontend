@@ -37,8 +37,10 @@ class _MessageCard extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
-        // this.props.login(this.state)
-
+        this.props.sendMessage(this.state)
+        this.setState({
+            content: ''
+        })
     }
 
     render() {
@@ -58,10 +60,10 @@ class _MessageCard extends Component {
                     <form onSubmit={e => this.handleOnSubmit(e)} noValidate autoComplete="off">
                         <FormControl margin="normal" required fullWidth>
                             <TextField 
-                            label="New Message"
-                            onChange={this.handleOnChange} 
+                            onChange={this.handleOnChange}
                             multiline
                             margin="normal"
+                            value={this.state.content}
                             name="content" 
                             variant="outlined"/>
                         </FormControl>

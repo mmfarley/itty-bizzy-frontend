@@ -71,14 +71,19 @@ export const getConversations = (user_id) => {
     }
 }
 
-export const sendMessage = () => {
-    return {
-        type: SEND_MESSAGE
+export const sendMessage = (message) => {
+    return function (dispatch) {
+        fetch('http://localhost:3000/api/v1/messages', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(message)
+        })
+            .then(resp => resp.json())
+            .then(message => dispatch({ type: SEND_MESSAGE, payload: message }))
     }
 }
 
-export const setUser = () => {
-    return {
-        type: SET_USER
-    }
-}

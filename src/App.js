@@ -10,21 +10,11 @@ import {Messages} from './components/messages'
 import MyBizDash from './components/mybizdash'
 import Invoices from './components/invoices'
 import Welcome from './components/welcome'
-import { connect } from 'react-redux'
 import { PrivateRoute } from './components/privateroute'
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from './components/theme'
-import { setUser } from './state/actions/actions'
-
 
 class App extends Component {
-
-  componentWillMount(){
-    if(localStorage.getItem("user")){
-      this.props.setUser()
-      redirect(history.location)
-    }
-  }
 
   render() {
     return (
@@ -50,4 +40,4 @@ class App extends Component {
 
 
 
-export default connect(null, { setUser })(App);
+export default App;

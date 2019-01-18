@@ -30,14 +30,11 @@ export const reducer = function (currentState, action) {
             localStorage.clear()
             newState.currentUser = null
             break;
-        case SET_USER:
-            newState.currentUser = JSON.parse(localStorage.getItem("user"))
-        break;
         case GET_CONVERSATIONS:
-            console.log("GET_CONVERSATIONS", action.payload)
             newState.conversations = action.payload.conversations
             break;
         case SEND_MESSAGE:
+            newState.conversations[0].conversation.push(action.payload)
             console.log("SEND MESSAGE")
             break;
     }
