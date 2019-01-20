@@ -9,6 +9,9 @@ import Invoices from "./invoices";
 import { getInvoices } from '../state/actions/actions'
 import { getMyBiz } from '../state/actions/actions'
 import { getBizzys } from '../state/actions/actions'
+import {BizCard} from "./bizcard";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class _UserDash extends Component {
 
@@ -32,9 +35,32 @@ class _UserDash extends Component {
         </>
     }
 
-    generateMyBizSection = () => {
-        
+    fakeBizExample = () => {
+        return {
+            user_id: this.props.user.id,
+            name: "Itty Biz Example", 
+            service_type: "Service Type",
+            hourly_rate: 25,
+            description: "This is where you'll give a brief background on your Itty Bizzy. How long you've been doing it, any specifics about your skills, etc."
+        }
+    }
 
+    generateMyBizSection = () => {
+        if(this.props.my_biz){
+            return <BizCard biz={this.props.my_biz} />
+        }else{
+            return <BizCard biz={this.fakeBizExample()} />
+        }
+    }
+
+    bizInfo = () => {
+        return <>
+            <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon><br /><br /><br /><br />
+            <Typography paragraph color="textSecondary" variant="h5">
+                The adjacent card shows how your Itty Bizzy is displayed in a search.<br /><br />
+                If you would like to add, edit, or delete your Itty Bizzy, you can click on the card and you will be taken to your Itty Bizzy dash.
+            </Typography>
+        </>
     }
 
     render() {
@@ -46,7 +72,7 @@ class _UserDash extends Component {
                     Welcome to Itty Bizzy, {this.props.user.name}!
                     </Typography>
                     <br />
-                    <Typography color="textSecondary">
+                    <Typography variant="h6" color="textSecondary">
                         You can create or edit your Itty Bizzy, view your messages, check invoices, or search for an Itty Bizzy near you!
                     </Typography>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
@@ -60,7 +86,14 @@ class _UserDash extends Component {
                         Your Itty Bizzy
                     </Typography>
                     <Grid container direction="row" spacing={24} style={{ padding: 24 }} >
-
+                        {this.generateMyBizSection()}
+                        <Grid item xs>
+                            <Card style={{ padding: 70, margin: 30, width: 650, height: 500 }} align="center">
+                                <CardContent>
+                                    {this.bizInfo()}
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     </Grid>
                 </Paper>
                 <Invoices currentUser={this.props.user} received_invoices={this.props.received_invoices} />
@@ -72,7 +105,7 @@ class _UserDash extends Component {
 const mapStateToProps = (state) => ({
     user: state.currentUser,
     received_invoices: state.received_invoices,
-    my_biz: state.my_biz,
+    my_biz: state.myBiz,
     bizzys: state.bizzys
 })
 

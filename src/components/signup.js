@@ -16,8 +16,7 @@ import history from "../state/history";
 class _Signup extends Component {
 
     state = {
-        first_name: '',
-        last_name: '',
+        name: '',
         email: '',
         password: ''
     }
@@ -31,7 +30,6 @@ class _Signup extends Component {
     handleOnSubmit = e => {
         e.preventDefault()
         this.props.signup(this.state)
-        history.push('/login')
     }
 
     render() {
@@ -46,12 +44,8 @@ class _Signup extends Component {
             </Typography>
                     <form onSubmit={e => this.handleOnSubmit(e)}>
                         <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor="first_name">First Name</InputLabel>
-                            <Input onChange={this.handleOnChange} id="first_name" name="first_name" />
-                        </FormControl>
-                        <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor="last_name">Last Name</InputLabel>
-                            <Input onChange={this.handleOnChange} name="last_name" type="last_name" id="last_name"/>
+                            <InputLabel htmlFor="name">Name</InputLabel>
+                            <Input onChange={this.handleOnChange} id="name" name="name" />
                         </FormControl>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="email">Email Address</InputLabel>

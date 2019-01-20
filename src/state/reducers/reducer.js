@@ -39,24 +39,27 @@ export const reducer = function (currentState, action) {
             break;
 
         case MARK_AS_PAID:
-            console.log("MARK_AS_PAID ran")
             break;
         case GET_INVOICES:
-            console.log("GET_INVOICES action.payload", action.payload)
-            newState.received_invoices = action.payload.received_bills
-            newState.sent_invoices = action.payload.sent_bills
+            console.log("invoices", action.payload)
+            if (action.payload.received_bills.length > 0){
+                newState.received_invoices = action.payload.received_bills
+            }
+            if (action.payload.sent_bills.length > 0) {
+                newState.sent_invoices = action.payload.sent_bills
+            }
             break;
 
         case GET_BIZZYS:
             console.log("GET_BIZZYS action.payload", action.payload)
-            newState.bizzys = action.payload.bizzys
+            newState.bizzys = action.payload
         break;
         case GET_MY_BIZ:
             console.log("GET_MY_BIZ action.payoad", action.payload)
-            newState.myBiz = action.payload.myBiz
+            newState.myBiz = action.payload[0]
         break;
         case EDIT_BIZ:
-            console.log("EDIT_BIZ action.payload", action.payload)
+            console.log("EDIT_BIZ and MAKE_BIZ action.payload", action.payload)
             newState.myBiz = action.payload
         break;
     }

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import { markAsPaid } from '../state/actions/actions'
 import { connect } from 'react-redux';
 import CardContent from '@material-ui/core/CardContent';
 import { MessageForm } from './messageform'
 import Icon from '@material-ui/core/Icon';
+import Grid from '@material-ui/core/Grid';
 
 
 class _BizCard extends Component {
@@ -43,17 +43,19 @@ class _BizCard extends Component {
     render() {
 
         return (
-            <Card style={{ padding: 15, margin: 30, width: 350, height: 500, "overflow-y": 'auto' }} align="center">
-                <CardContent>
-                    <Typography variant="h6" color="primary">Itty Bizzy: <br /> {this.props.biz.name}</Typography>
-                    <Icon color="primary" style={{ fontSize: 60 }}>store</Icon>
-                    <Typography variant="h7" color="textSecondary">What I do: {this.props.biz.service_type}</Typography>
-                    <Typography variant="h7" color="textSecondary">Rate: ${this.props.biz.hourly_rate}/hour</Typography>
-                    <Typography variant="h7" color="textSecondary">About Me: {this.props.biz.description}</Typography>
-                    {this.renderInquireButton()}
-                    {this.renderMessageForm()}
-                </CardContent>
-            </Card>
+            <Grid item xs>
+                <Card style={{ padding: 15, margin: 30, width: 350, height: 500, "overflow-y": 'auto' }} align="center">
+                    <CardContent >
+                        <Typography variant="h6" color="primary">Itty Bizzy: <br /> {this.props.biz.name}</Typography><br />
+                        <Icon color="primary" style={{ fontSize: 60 }}>store</Icon><br /><br />
+                        <Typography variant="h6" color="textSecondary">My Service: {this.props.biz.service_type}</Typography><br />
+                        <Typography variant="h6" color="textSecondary">Rate: ${this.props.biz.hourly_rate}/hour</Typography><br />
+                        <Typography paragraph variant="h6" color="textSecondary">About Me: {this.props.biz.description}</Typography>
+                        {this.renderInquireButton()}
+                        {this.renderMessageForm()}
+                    </CardContent>
+                </Card>
+            </Grid>
         );
     }
 }
@@ -62,4 +64,4 @@ const mapStateToProps = (state) => ({
     user: state.currentUser
 })
 
-export const BizCard = connect(mapStateToProps, { markAsPaid })(_BizCard);
+export const BizCard = connect(mapStateToProps)(_BizCard);
