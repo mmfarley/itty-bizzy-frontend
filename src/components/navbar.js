@@ -24,7 +24,7 @@ class _NavBar extends Component {
                     color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>search</Icon>
                 </Button>
                 <Button
-                    onClick={() => {history.push('/biz-dash')}}
+                    onClick={() => {history.push('/my-biz')}}
                         color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>store</Icon></Button>
                 <Button
                     onClick={() => {history.push('/messages')}}

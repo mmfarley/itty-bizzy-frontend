@@ -13,10 +13,9 @@ class _Messages extends Component {
     }
 
     componentWillMount() {
-        console.log("component mounted")
-        this.props.getConversations(this.props.user.id)
-        
+        this.props.getConversations(this.props.user.id)  
     }
+
     //CHANGE TO EVERY SECOND FOR PRESENTATION
     updateMessages = () => {
         setInterval(() => this.props.getConversations(this.props.user.id), 10000)
@@ -31,12 +30,11 @@ class _Messages extends Component {
         ))}
     }
 
-
     render() {
         return (
             <div>
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
-                    <Typography color="textSecondary" variant="h5">Your Messages</Typography>
+                    <Typography color="textSecondary" variant="h4">Messaging</Typography>
                     <Grid container spacing={24} style={{ padding: 24 }}>
                         {this.generateMessageCards()}
                     </Grid>

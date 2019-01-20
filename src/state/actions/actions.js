@@ -9,10 +9,11 @@ import {
     GET_INVOICES,
     EDIT_BIZ,
     GET_BIZZYS,
-    GET_MY_BIZ
+    GET_MY_BIZ,
+    MAKE_BIZ
 } from "./types";
 
-
+const API = 'http://localhost:3000/api/v1/'
 
 export const makeFalse = () => {
     return {
@@ -28,7 +29,7 @@ export const makeTrue = () => {
 
 export const login = (loggingUser) => {
     return function (dispatch) {
-        fetch('http://localhost:3000/api/v1/auth', {
+        fetch(`${API}auth`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -44,7 +45,7 @@ export const login = (loggingUser) => {
 
 export const signup = (loggingUser) => {
     return function (dispatch) {
-        fetch('http://localhost:3000/api/v1/users', {
+        fetch(`${API}users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -65,7 +66,7 @@ export const logout = () => {
 
 export const getConversations = (user_id) => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/api/v1/messages/user/${user_id}`, {
+        fetch(`${API}messages/user/${user_id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -77,7 +78,7 @@ export const getConversations = (user_id) => {
 
 export const sendMessage = (message) => {
     return function (dispatch) {
-        fetch('http://localhost:3000/api/v1/messages', {
+        fetch(`${API}messages`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -93,14 +94,14 @@ export const sendMessage = (message) => {
 
 export const markAsPaid = (id) => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/api/v1/bills/${id}`, {
+        fetch(`${API}bills/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({ isPaid: true })//check this syntax
+            body: JSON.stringify({ is_paid: true })//check this syntax
         })
             .then(resp => resp.json())
             .then(() => dispatch({ type: MARK_AS_PAID }))
@@ -110,7 +111,7 @@ export const markAsPaid = (id) => {
 //make custom route for this. model after messages custom route
 export const getInvoices = (user_id) => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/api/v1/bills/user/${user_id}`, {
+        fetch(`${API}bills/user/${user_id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -122,7 +123,7 @@ export const getInvoices = (user_id) => {
 
 export const editBiz = (business) => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/api/v1/businesses/${business.id}`, {
+        fetch(`${API}businesses/${business.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -136,10 +137,26 @@ export const editBiz = (business) => {
     }
 }
 
+export const makeBiz = (business) => {
+    return function (dispatch) {
+        fetch(`${API}businesses`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(business)
+        })
+            .then(resp => resp.json())
+            .then(business => dispatch({ type: EDIT_BIZ, payload: business }))
+    }
+}
+
 
 export const getBizzys = () => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/api/v1/businesses`, {
+        fetch(`${API}businesses`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -153,7 +170,7 @@ export const getBizzys = () => {
 //NOTE THAT RELATIONSHIP IS DIFFERENT. SHOULD BE EASIER
 export const getMyBiz = (id) => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/api/v1/businesses/user/${id}`, {
+        fetch(`${API}businesses/user/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

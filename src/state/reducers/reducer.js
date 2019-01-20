@@ -31,17 +31,22 @@ export const reducer = function (currentState, action) {
             break;
         case LOGOUT_USER:
             localStorage.clear()
-            newState = null
+            newState.currentUser = {}
             break;
+
         case GET_CONVERSATIONS:
             newState.conversations = action.payload.conversations
             break;
+
         case MARK_AS_PAID:
             console.log("MARK_AS_PAID ran")
             break;
         case GET_INVOICES:
             console.log("GET_INVOICES action.payload", action.payload)
+            newState.received_invoices = action.payload.received_bills
+            newState.sent_invoices = action.payload.sent_bills
             break;
+
         case GET_BIZZYS:
             console.log("GET_BIZZYS action.payload", action.payload)
             newState.bizzys = action.payload.bizzys

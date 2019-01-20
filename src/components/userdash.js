@@ -2,21 +2,35 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux'
-import { getConversations } from '../state/actions/actions'
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import Chat from '@material-ui/icons/Chat';
 import Icon from '@material-ui/core/Icon';
-import history from "../state/history";
+import {redirect} from "../state/history";
 import Invoices from "./invoices";
+import { getInvoices } from '../state/actions/actions'
+import { getMyBiz } from '../state/actions/actions'
+import { getBizzys } from '../state/actions/actions'
 
 class _UserDash extends Component {
 
-    // componentDidMount() {
-    //     console.log("component mounted")
-    //     this.props.getConversations(this.props.user.id)
+    componentWillMount(){
+        this.props.getInvoices(this.props.user.id)
+        this.props.getBizzys()
+        this.props.getMyBiz(this.props.user.id)
+    }
 
-    // }
+    generateBigIconLinks = (link, icon, text) => {
+        return <>
+        <Grid item xs={12} sm={6} lg={4} xl={3}>
+            <Paper onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30 }}>
+                <Icon color="primary" style={{ fontSize: 60 }}>{icon}</Icon>
+                <br /><br />
+                <Typography color="textSecondary" variant="h5" align="center">
+                    {text}
+                </Typography>
+            </Paper>
+        </Grid>
+        </>
+    }
 
     render() {
        
@@ -24,52 +38,30 @@ class _UserDash extends Component {
             <div>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
-                    <Typography color="primary" variant="h5">
-                    Welcome to Itty Bizzy, {this.props.user.first_name}!
+                    <Typography color="primary" variant="h4">
+                    Welcome to Itty Bizzy, {this.props.user.name}!
                     </Typography>
                     <br />
-                    <Typography color="textSecondary" variant="h7">
-                        You can create or edit your Itty Biz, view your messages, check invoices, or search for an Itty Biz near you
+                    <Typography color="textSecondary">
+                        You can create or edit your Itty Biz, view your messages, check invoices, or search for an Itty Biz near you!
                     </Typography>
                     <Grid container spacing={24} style={{ padding: 24 }}>
-                        <Grid item xs={12} sm={6} lg={4} xl={3}>
-                            <Paper onClick={() => { history.push('/biz-dash') }} style={{ padding: 40, margin: 30 }}>
-                                <Icon color="primary" style={{ fontSize: 60 }}>store</Icon>
-                                <br /><br />
-                                <Typography color="textSecondary" variant="h7" align="center">
-                                TO GO TO MY ITTY BIZ. USE CUTE ICON OR SOMETHING. MAYBE RENDER SOME BIZ DETAILS.
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={6} lg={4} xl={3}>
-                            <Paper onClick={() => {history.push('/messages')}} style={{ padding: 40, margin: 30 }}>
-                                <Icon color="primary" style={{ fontSize: 60 }}>forum</Icon>
-                                <br /><br />
-                                <Typography color="textSecondary" variant="h7" align="center">
-                                TO GO TO MY MESSAGES. USE CUTE ICON OR SOMETHING.
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={6} lg={4} xl={3}>
-                            <Paper style={{ padding: 40, margin: 30 }}>
-                                <Icon onClick={() => { history.push('/find-biz') }} color="primary" style={{ fontSize: 60 }}>search</Icon>
-                                <br /><br />
-                                <Typography color="textSecondary" variant="h7" align="center">
-                                TO GO TO find businesses. USE CUTE ICON OR SOMETHING.
-                                </Typography>
-                            </Paper>
-                        </Grid>
+                        {this.generateBigIconLinks('/my-biz', "store", 'My Itty Biz')}
+                        {this.generateBigIconLinks('/messages', "forum", 'My Messages')}
+                        {this.generateBigIconLinks('/find-biz', 'search', 'Find Itty Bizzys')}
                     </Grid>
                 </Paper>
-                <Invoices />
+                <Invoices currentUser={this.props.user} received_invoices={this.props.received_invoices} />
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-    conversations: state.conversations,
-    user: state.currentUser
+    user: state.currentUser,
+    received_invoices: state.received_invoices,
+    my_biz: state.my_biz,
+    bizzys: state.bizzys
 })
 
-export const UserDash = connect(mapStateToProps, { getConversations })(_UserDash);
+export const UserDash = connect(mapStateToProps, { getInvoices, getMyBiz, getBizzys })(_UserDash);
