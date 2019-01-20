@@ -3,7 +3,6 @@ import { Router } from 'react-router-dom'
 import { Switch, Route } from 'react-router'
 import history from './state/history'
 import { Login } from './components/login'
-import { NavBar } from './components/navbar'
 import { Signup } from './components/signup'
 import {UserDash} from './components/userdash'
 import {Messages} from './components/messages'
@@ -21,8 +20,6 @@ class App extends Component {
         <Router history={history}>
           <MuiThemeProvider theme={theme}>
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-            <div>
-              <NavBar />
               <Switch>
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/login" component={Login} />
@@ -32,7 +29,6 @@ class App extends Component {
                 <PrivateRoute exact path="/my-biz" component={MyBiz} />
                 <PrivateRoute exact path="/find-biz" component={FindBiz} />
               </Switch>
-            </div>
           </MuiThemeProvider>
         </Router>
     );

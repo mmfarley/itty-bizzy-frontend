@@ -11,43 +11,6 @@ import Icon from '@material-ui/core/Icon';
 
 class _NavBar extends Component {
 
-    // state = {
-    //     loggedIn: false
-    // }
-    
-    
-    menuOptions = () => {
-        if (localStorage.getItem("user")) {
-            return(
-                <><Button
-                    onClick={() => {history.push('/find-biz')}}
-                    color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>search</Icon>
-                </Button>
-                <Button
-                    onClick={() => {history.push('/my-biz')}}
-                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>store</Icon></Button>
-                <Button
-                    onClick={() => {history.push('/messages')}}
-                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>forum</Icon></Button>
-                <Button
-                    onClick={() => {history.push('/user-dash')}}
-                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>home</Icon></Button>
-                <Button
-                    onClick={() => {
-                        this.props.logout()
-                        history.push('/')
-                    }}
-                    color="inherit">Logout</Button></>
-        )}else{
-                return(
-                <><Button
-                    onClick={() => {
-                        history.push('/login')
-                    }}
-                    color="inherit">Login</Button></>
-                )}
-    }
-    
     render() {
         return (
             <AppBar position="static">
@@ -58,7 +21,25 @@ class _NavBar extends Component {
                         Itty Bizzy
                         <Icon color="inherit" style={{ fontSize: 20 }}>public</Icon>
                     </Typography>
-                    {this.menuOptions()}
+                    <Button
+                        onClick={() => { history.push('/find-biz') }}
+                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>search</Icon>
+                    </Button>
+                    <Button
+                        onClick={() => { history.push('/my-biz') }}
+                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>store</Icon></Button>
+                    <Button
+                        onClick={() => { history.push('/messages') }}
+                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>forum</Icon></Button>
+                    <Button
+                        onClick={() => { history.push('/user-dash') }}
+                        color="inherit"><Icon color="inherit" style={{ fontSize: 30 }}>home</Icon></Button>
+                    <Button
+                        onClick={() => {
+                            this.props.logout()
+                            history.push('/')
+                        }}
+                        color="inherit">Logout</Button>
                 </Toolbar>
             </AppBar>
         );

@@ -12,6 +12,7 @@ import { getBizzys } from '../state/actions/actions'
 import {BizCard} from "./bizcard";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { NavBar } from './navbar'
 
 class _UserDash extends Component {
 
@@ -67,6 +68,7 @@ class _UserDash extends Component {
        
         return (
             <div>
+                <NavBar />
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="primary" variant="h4">
                     Welcome to Itty Bizzy, {this.props.user.name}!
@@ -86,9 +88,9 @@ class _UserDash extends Component {
                         Your Itty Bizzy
                     </Typography>
                     <Grid container direction="row" spacing={24} style={{ padding: 24 }} >
-                        {this.generateMyBizSection()}
+                        <div onClick={()=>redirect('/my-biz')} >{this.generateMyBizSection()}</div>
                         <Grid item xs>
-                            <Card style={{ padding: 70, margin: 30, width: 650, height: 500 }} align="center">
+                            <Card style={{ padding: 65, margin: 30, width: 650, height: 500 }} align="center">
                                 <CardContent>
                                     {this.bizInfo()}
                                 </CardContent>

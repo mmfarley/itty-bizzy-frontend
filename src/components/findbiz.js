@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { BizCard } from './messagecard'
+import { NavBar } from './navbar'
 
 class FindBiz extends Component {
 
@@ -23,23 +24,26 @@ class FindBiz extends Component {
 
     render() {
         return (
-            <Paper style={{ padding: 40, margin: 30 }} align="center">
-                <Typography color="textSecondary" variant="h6">
-                    Find an Itty Biz near you!
-                                </Typography>
-                <Grid container spacing={24} style={{ padding: 24 }}>
-                    <Grid item xs={12} sm={6} lg={4} xl={3}>
-                        <Card style={{ padding: 15, margin: 30, maxWidth: 500, maxHeight: 400 }} align="center">
-                            RENDER ITTY BIZ CARDS
-                            -PICTURE
-                            -SERVICE TYPE
-                            -DESCRIPTION
-                            -RATE
-                            CLICK TO VIEW THEIR ITTY BIZ PAGE
-                        </Card>
+            <div>
+                <NavBar />
+                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                    <Typography color="textSecondary" variant="h6">
+                        Find an Itty Biz near you!
+                                    </Typography>
+                    <Grid container spacing={24} style={{ padding: 24 }}>
+                        <Grid item xs={12} sm={6} lg={4} xl={3}>
+                            <Card style={{ padding: 15, margin: 30, maxWidth: 500, maxHeight: 400 }} align="center">
+                                RENDER ITTY BIZ CARDS
+                                -PICTURE
+                                -SERVICE TYPE
+                                -DESCRIPTION
+                                -RATE
+                                CLICK TO VIEW THEIR ITTY BIZ PAGE
+                            </Card>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Paper>
+                </Paper>
+            </div>
         )
     }
 }

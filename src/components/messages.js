@@ -6,6 +6,7 @@ import { MessageCard } from './messagecard'
 import { connect } from 'react-redux'
 import { getConversations } from '../state/actions/actions'
 import Icon from '@material-ui/core/Icon';
+import { NavBar } from './navbar'
 
 class _Messages extends Component {
 
@@ -34,6 +35,7 @@ class _Messages extends Component {
     render() {
         return (
             <div>
+                <NavBar />
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="primary" variant="h4">Messages</Typography><br />
                     <Icon color="primary" style={{ fontSize: 60 }}>forum</Icon>
