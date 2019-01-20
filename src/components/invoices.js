@@ -10,7 +10,7 @@ class Invoices extends Component {
 
     generateInvoiceCards = (invoices) => {
         return invoices.map((invoice) => (
-            <Grid item xs={12} sm={6} lg={4} xl={3}>
+            <Grid item xs>
                 <InvoiceCard invoice={invoice}/>
             </Grid>
         ))
@@ -42,7 +42,7 @@ class Invoices extends Component {
                     <Typography color="textSecondary" variant="h5">
                     {this.invoiceHeaderType()}
                     </Typography>
-                    <Grid container spacing={24} style={{ padding: 24 }}>
+                    <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.renderInvoices()}
                     </Grid>
                 </Paper>

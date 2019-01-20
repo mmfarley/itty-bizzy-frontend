@@ -20,8 +20,8 @@ class _UserDash extends Component {
 
     generateBigIconLinks = (link, icon, text) => {
         return <>
-        <Grid item xs={12} sm={6} lg={4} xl={3}>
-            <Paper onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30 }}>
+        <Grid item xs>
+            <Paper onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30, width: 300 }}>
                 <Icon color="primary" style={{ fontSize: 60 }}>{icon}</Icon>
                 <br /><br />
                 <Typography color="textSecondary" variant="h5" align="center">
@@ -43,9 +43,9 @@ class _UserDash extends Component {
                     </Typography>
                     <br />
                     <Typography color="textSecondary">
-                        You can create or edit your Itty Biz, view your messages, check invoices, or search for an Itty Biz near you!
+                        You can create or edit your Itty Bizzy, view your messages, check invoices, or search for an Itty Bizzy near you!
                     </Typography>
-                    <Grid container spacing={24} style={{ padding: 24 }}>
+                    <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.generateBigIconLinks('/my-biz', "store", 'My Itty Biz')}
                         {this.generateBigIconLinks('/messages', "forum", 'My Messages')}
                         {this.generateBigIconLinks('/find-biz', 'search', 'Find Itty Bizzys')}

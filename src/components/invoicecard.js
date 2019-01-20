@@ -67,7 +67,7 @@ class _InvoiceCard extends Component {
     render() {
 
         return (
-            <Card style={{ padding: 15, margin: 30, maxWidth: 300, maxHeight: 400 }} align="center">
+            <Card style={{ padding: 15, margin: 30, width: 300, height: 425 }} align="center">
                 <CardContent>
                     {this.renderInvoiceNames()}
                     <br />

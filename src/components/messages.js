@@ -35,7 +35,7 @@ class _Messages extends Component {
             <div>
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="textSecondary" variant="h4">Messaging</Typography>
-                    <Grid container spacing={24} style={{ padding: 24 }}>
+                    <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.generateMessageCards()}
                     </Grid>
                 </Paper>
