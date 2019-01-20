@@ -11,8 +11,7 @@ import { MessageForm } from './messageform'
 class _InvoiceCard extends Component {
 
     state = {
-        showMessageForm: false,
-        content: ""
+        showMessageForm: false
     }
     
     handlePaidOnClick = () => {
@@ -67,7 +66,7 @@ class _InvoiceCard extends Component {
     render() {
 
         return (
-            <Card style={{ padding: 15, margin: 30, width: 300, height: 425 }} align="center">
+            <Card style={{ padding: 15, margin: 30, width: 300, height: 425, "overflow-y": 'auto' }} align="center">
                 <CardContent>
                     {this.renderInvoiceNames()}
                     <br />

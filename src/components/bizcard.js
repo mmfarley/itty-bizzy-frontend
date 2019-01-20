@@ -6,9 +6,12 @@ import { markAsPaid } from '../state/actions/actions'
 import { connect } from 'react-redux';
 import CardContent from '@material-ui/core/CardContent';
 import { MessageForm } from './messageform'
+import Icon from '@material-ui/core/Icon';
 
 
 class _BizCard extends Component {
+
+    //pass down the biz as props
 
     state={
         showMessageForm: false
@@ -19,7 +22,7 @@ class _BizCard extends Component {
     }
 
     renderInquireButton = () => {
-        if (!this.state.showMessageForm) {
+        if ((this.props.biz.user_id != this.props.user.id) && !this.state.showMessageForm) {
             return <><Button
                 onClick={() => this.handleInquireOnClick()}
                 fullWidth
@@ -31,20 +34,24 @@ class _BizCard extends Component {
     }
 
     renderMessageForm = () => {
-        // if ((this.props.Biz.billed_user_id == this.props.user.id) && this.state.showMessageForm) {
-        //     return <MessageForm user_id={this.props.Biz.billed_user_id} messaged_user_id={this.props.Biz.user_id} />
-        // } else if ((this.props.Biz.user_id == this.props.user.id) && this.state.showMessageForm) {
-        //     return <MessageForm user_id={this.props.Biz.user_id} messaged_user_id={this.props.Biz.billed_user_id} />
-        // }
+        if ((this.props.biz.user_id != this.props.user.id) && this.state.showMessageForm) {
+            return <MessageForm user_id={this.props.user.id} messaged_user_id={this.props.biz.user_id} />
+        }
     }
 
 
     render() {
 
         return (
-            <Card style={{ padding: 15, margin: 30, maxWidth: 300, maxHeight: 400 }} align="center">
+            <Card style={{ padding: 15, margin: 30, width: 350, height: 500, "overflow-y": 'auto' }} align="center">
                 <CardContent>
-                    THIS GON BE A BIZ SEARCH CARD. SHIT GON TAKE PROPS
+                    <Typography variant="h6" color="primary">Itty Bizzy: <br /> {this.props.biz.name}</Typography>
+                    <Icon color="primary" style={{ fontSize: 60 }}>store</Icon>
+                    <Typography variant="h7" color="textSecondary">What I do: {this.props.biz.service_type}</Typography>
+                    <Typography variant="h7" color="textSecondary">Rate: ${this.props.biz.hourly_rate}/hour</Typography>
+                    <Typography variant="h7" color="textSecondary">About Me: {this.props.biz.description}</Typography>
+                    {this.renderInquireButton()}
+                    {this.renderMessageForm()}
                 </CardContent>
             </Card>
         );

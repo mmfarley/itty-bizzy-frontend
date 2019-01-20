@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { MessageCard } from './messagecard'
 import { connect } from 'react-redux'
 import { getConversations } from '../state/actions/actions'
+import Icon from '@material-ui/core/Icon';
 
 class _Messages extends Component {
 
@@ -34,7 +35,8 @@ class _Messages extends Component {
         return (
             <div>
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
-                    <Typography color="textSecondary" variant="h4">Messaging</Typography>
+                    <Typography color="primary" variant="h4">Messages</Typography><br />
+                    <Icon color="primary" style={{ fontSize: 60 }}>forum</Icon>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.generateMessageCards()}
                     </Grid>

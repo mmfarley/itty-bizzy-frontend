@@ -50,21 +50,18 @@ class _NavBar extends Component {
     
     render() {
         return (
-            <div >
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography style={{ flexGrow: 1 }} onClick={() => {
-                            history.push('/user-dash')
-                        }} variant="h5" color="inherit" >
-                            Itty Bizzy
-                            <Icon color="inherit" style={{ fontSize: 20 }}>public</Icon>
-                        </Typography>
-                        {this.menuOptions()}
-                    </Toolbar>
-                </AppBar>
-            </div>
-    );
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography style={{ flexGrow: 1 }} onClick={() => {
+                        history.push('/user-dash')
+                    }} variant="h5" color="inherit" >
+                        Itty Bizzy
+                        <Icon color="inherit" style={{ fontSize: 20 }}>public</Icon>
+                    </Typography>
+                    {this.menuOptions()}
+                </Toolbar>
+            </AppBar>
+        );
     }
 }
 

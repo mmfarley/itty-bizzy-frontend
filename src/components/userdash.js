@@ -32,11 +32,15 @@ class _UserDash extends Component {
         </>
     }
 
+    generateMyBizSection = () => {
+        
+
+    }
+
     render() {
        
         return (
             <div>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="primary" variant="h4">
                     Welcome to Itty Bizzy, {this.props.user.name}!
@@ -49,6 +53,14 @@ class _UserDash extends Component {
                         {this.generateBigIconLinks('/my-biz', "store", 'My Itty Biz')}
                         {this.generateBigIconLinks('/messages', "forum", 'My Messages')}
                         {this.generateBigIconLinks('/find-biz', 'search', 'Find Itty Bizzys')}
+                    </Grid>
+                </Paper>
+                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                    <Typography color="primary" variant="h4">
+                        Your Itty Bizzy
+                    </Typography>
+                    <Grid container direction="row" spacing={24} style={{ padding: 24 }} >
+
                     </Grid>
                 </Paper>
                 <Invoices currentUser={this.props.user} received_invoices={this.props.received_invoices} />
