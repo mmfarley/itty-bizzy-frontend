@@ -14,6 +14,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { NavBar } from './navbar'
 
+
 class _UserDash extends Component {
 
     componentWillMount(){
@@ -46,21 +47,29 @@ class _UserDash extends Component {
         }
     }
 
-    generateMyBizSection = () => {
+    renderMyBizCard = () => {
         if(this.props.my_biz){
-            return <BizCard biz={this.props.my_biz} />
+            return <BizCard onClick={() => redirect('/my-biz')} biz={this.props.my_biz} />
         }else{
             return <BizCard biz={this.fakeBizExample()} />
         }
     }
-
+    
     bizInfo = () => {
         return <>
-            <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon><br /><br /><br /><br />
-            <Typography paragraph color="textSecondary" variant="h5">
-                The adjacent card shows how your Itty Bizzy is displayed in a search.<br /><br />
-                If you would like to add, edit, or delete your Itty Bizzy, you can click on the card and you will be taken to your Itty Bizzy dash.
-            </Typography>
+            <Grid item xs>
+                <Card style={{ padding: 15, margin: 30, width: 350, maxHeight: 600 }} align="center">
+                    <CardContent>
+                        <div onClick={() => redirect('/my-biz')}>
+                        <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon><br /><br />
+                        </div>
+                        <Typography paragraph color="textSecondary" variant="h5">
+                            The adjacent card shows how your Itty Bizzy is displayed in a search.<br /><br />
+                            If you would like to add, edit, or delete your Itty Bizzy, you can click on the edit icon above and you will be taken to your Itty Bizzy dash.
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Grid>
         </>
     }
 
@@ -87,15 +96,9 @@ class _UserDash extends Component {
                     <Typography color="primary" variant="h4">
                         Your Itty Bizzy
                     </Typography>
-                    <Grid container direction="row" spacing={24} style={{ padding: 24 }} >
-                        <div onClick={()=>redirect('/my-biz')} >{this.generateMyBizSection()}</div>
-                        <Grid item xs>
-                            <Card style={{ padding: 65, margin: 30, width: 650, height: 500 }} align="center">
-                                <CardContent>
-                                    {this.bizInfo()}
-                                </CardContent>
-                            </Card>
-                        </Grid>
+                    <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
+                        {this.renderMyBizCard()}
+                        {this.bizInfo()}
                     </Grid>
                 </Paper>
                 <Invoices currentUser={this.props.user} received_invoices={this.props.received_invoices} />

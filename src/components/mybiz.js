@@ -20,8 +20,8 @@ import { NavBar } from './navbar'
 class _MyBiz extends Component {
 
     componentWillMount(){
-        this.props.getInvoices(this.props.user.id)
         this.props.getMyBiz(this.props.user.id)
+        this.props.getInvoices(this.props.user.id)
     }
 
     renderBizCard = () => {
@@ -35,7 +35,7 @@ class _MyBiz extends Component {
 
     renderBizForm = () => {
         if (this.props.my_biz) {
-            return <BizForm my_biz={this.props.my_biz} />
+            return <BizForm biz={this.props.my_biz} />
         }else{
             return <BizForm />
         }
@@ -75,8 +75,8 @@ class _MyBiz extends Component {
 
 const mapStateToProps = (state) => ({
     user: state.currentUser,
-    sent_invoices: state.sent_invoices,
-    my_biz: state.myBiz
+    my_biz: state.myBiz,
+    sent_invoices: state.sent_invoices
 })
 
 export const MyBiz = connect(mapStateToProps, {editBiz, makeBiz, getMyBiz, getInvoices})(_MyBiz);

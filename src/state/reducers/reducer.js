@@ -41,7 +41,7 @@ export const reducer = function (currentState, action) {
         case MARK_AS_PAID:
             break;
         case GET_INVOICES:
-            console.log("invoices", action.payload)
+            // console.log("invoices", action.payload)
             if (action.payload.received_bills.length > 0){
                 newState.received_invoices = action.payload.received_bills
             }
@@ -51,7 +51,7 @@ export const reducer = function (currentState, action) {
             break;
 
         case GET_BIZZYS:
-            console.log("GET_BIZZYS action.payload", action.payload)
+            // console.log("GET_BIZZYS action.payload", action.payload)
             newState.bizzys = action.payload
         break;
         case GET_MY_BIZ:

@@ -20,12 +20,13 @@ class _BizForm extends Component {
     }
 
     componentWillMount() {
-        if (this.props.my_biz) {
+        if (this.props.biz) {
+            console.log("inside compontwillmount in bizform")
             this.setState({
-                name: this.props.my_biz.name,
-                description: this.props.my_biz.description,
-                hourly_rate: this.props.my_biz.hourly_rate,
-                service_type: this.props.my_biz.service_type
+                name: this.props.biz.name,
+                description: this.props.biz.description,
+                hourly_rate: this.props.biz.hourly_rate,
+                service_type: this.props.biz.service_type
             })
         }
     }
@@ -44,7 +45,7 @@ class _BizForm extends Component {
 
 
     render() {
-
+        // console.log("in biz form", this.props.biz.name)
         return (
             <form onSubmit={e => this.handleOnSubmit(e)}>
                 <FormControl margin="normal" required fullWidth>

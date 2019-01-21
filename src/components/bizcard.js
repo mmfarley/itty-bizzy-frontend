@@ -41,7 +41,7 @@ class _BizCard extends Component {
 
 
     render() {
-
+        console.log("in biz card", this.props.biz.name)
         return (
             <Grid item xs >
                 <Card style={{ padding: 15, margin: 30, width: 350, maxHeight: 600, "overflow-y": 'auto' }} align="center">
