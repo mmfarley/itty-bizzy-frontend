@@ -44,7 +44,7 @@ class _BizCard extends Component {
 
         return (
             <Grid item xs >
-                <Card style={{ padding: 15, margin: 30, width: 350, height: 500, "overflow-y": 'auto' }} align="center">
+                <Card style={{ padding: 15, margin: 30, width: 350, maxHeight: 600, "overflow-y": 'auto' }} align="center">
                     <CardContent >
                         <Typography variant="h6" color="primary">Itty Bizzy: <br /> {this.props.biz.name}</Typography><br />
                         <Icon color="primary" style={{ fontSize: 60 }}>store</Icon><br /><br />

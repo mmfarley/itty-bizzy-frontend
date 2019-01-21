@@ -7,7 +7,8 @@ import { getInvoices } from '../state/actions/actions'
 import { getMyBiz } from '../state/actions/actions'
 import { editBiz } from '../state/actions/actions'
 import { makeBiz } from '../state/actions/actions'
-import BizCard from "./bizcard";
+import {BizCard} from "./bizcard";
+import { BizForm } from "./bizform";
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
@@ -18,72 +19,26 @@ import { NavBar } from './navbar'
 
 class _MyBiz extends Component {
 
-    state = {
-        name: '',
-        description: '',
-        hourly_rate: '',
-        service_type: '',
-        user_id: this.props.user.id
-    }
-
     componentWillMount(){
         this.props.getInvoices(this.props.user.id)
         this.props.getMyBiz(this.props.user.id)
     }
 
-    handleOnChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    renderBizCard = () => {
+        if(this.props.my_biz){
+            return <BizCard biz={this.props.my_biz} />
+        }
     }
-
-    handleOnSubmit = e => {
-        e.preventDefault()
-        this.props.sendMessage(this.state)
-        this.setState({
-            content: ''
-        })
-    }
-
     // renderInvoiceForm = () => {
     //     has appropriate fields for sending an invoice to associated clients
     // }
 
     renderBizForm = () => {
-        return <>
-            <form onSubmit={e => this.handleOnSubmit(e)}>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>
-                    <Input onChange={this.handleOnChange} id="name" name="name" />
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="service_type">Service Type</InputLabel>
-                    <Input onChange={this.handleOnChange} id="service_type" name="service_type" />
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="hourly_rate">Hourly Rate</InputLabel>
-                    <Input onChange={this.handleOnChange} name="hourly_rate" type="hourly_rate"/>
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="description">Description</InputLabel>
-                    <TextField
-                        onChange={this.handleOnChange}
-                        multiline
-                        margin="normal"
-                        value={this.state.description}
-                        name="description"
-                        variant="outlined" />
-                </FormControl>
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                >
-                    Submit Itty Bizzy
-                </Button>
-            </form>
-        </>
+        if (this.props.my_biz) {
+            return <BizForm my_biz={this.props.my_biz} />
+        }else{
+            return <BizForm />
+        }
     }
 
     render() {
@@ -103,19 +58,14 @@ class _MyBiz extends Component {
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="Primary" variant="h4">
                         Your Itty Bizzy
-                    </Typography>
-                    {/* <BizCard /> */}
+                    </Typography><br />
+                    {this.renderBizCard()}
                 </Paper>
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
-                    <Typography color="textSecondary" variant="h7">
-                        SEND DOWN APPROPRIATE PROPS FOR RENDERING AND SET STATE WITH THEM
-                        <br /><br />
-                        IF NO PROPS ARE SENT, RENDER CREATE BUSINESS FORM SEGMENTS<br />
-                        REUSE THESE FORM SEGMENTS FOR EDITING BUISINESS<br /><br />
-
-                        MAKE FUNCTION(S) THAT CHECKS TO SEE IF THE CURRENT USER MATCHES THE BIZ USER<br />
-                        IF THEY DO, RENDER FORMS BENEATH EACH SEGMENT TO EDIT BIZ
+                    <Typography color="Primary" variant="h4">
+                        Edit/Create
                     </Typography>
+                    {this.renderBizForm()}
                 </Paper>
                 <Invoices currentUser={this.props.user} sent_invoices={this.props.sent_invoices}/>
             </div>
