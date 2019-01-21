@@ -12,6 +12,7 @@ import React, { Component } from "react";
 import { login } from '../state/actions/actions'
 import { connect } from 'react-redux';
 import history from "../state/history";
+import Icon from '@material-ui/core/Icon';
 
 
 class _Login extends Component {
@@ -32,9 +33,24 @@ class _Login extends Component {
         this.props.login(this.state)
     }
 
+    errorBox() {
+        if (this.props.login_error) {
+            return (
+                <Paper style={{ padding: 10, margin: 60, maxWidth: 250 }} align="center">
+                    <Icon color="error" style={{ fontSize: 40 }}>error</Icon>
+                    <Typography color="textSecondary">
+                    {this.props.login_error}
+                    </Typography>
+                </Paper>
+            )
+        }
+    }
+
+
     render() {
         return (
             <div align="center">
+                {this.errorBox()}
                 <Paper style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
                     <Avatar >
                         <LockOutlinedIcon />
@@ -81,5 +97,8 @@ class _Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    login_error: state.loginError
+})
 
-export const Login = connect(null, { login })(_Login);
+export const Login = connect(mapStateToProps, { login })(_Login);

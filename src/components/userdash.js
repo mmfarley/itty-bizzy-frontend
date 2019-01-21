@@ -13,6 +13,7 @@ import {BizCard} from "./bizcard";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { NavBar } from './navbar'
+import { BizForm } from "./bizform";
 
 
 class _UserDash extends Component {
@@ -54,6 +55,7 @@ class _UserDash extends Component {
             return <BizCard biz={this.fakeBizExample()} />
         }
     }
+
     
     bizInfo = () => {
         return <>
@@ -65,7 +67,7 @@ class _UserDash extends Component {
                         </div>
                         <Typography paragraph color="textSecondary" variant="h5">
                             The adjacent card shows how your Itty Bizzy is displayed in a search.<br /><br />
-                            If you would like to add, edit, or delete your Itty Bizzy, you can click on the edit icon above and you will be taken to your Itty Bizzy dash.
+                            If you would like to add, edit, or delete your Itty Bizzy, you can click on the edit icon above and you will be taken to your Itty Bizzy page.
                         </Typography>
                     </CardContent>
                 </Card>
@@ -79,6 +81,7 @@ class _UserDash extends Component {
             <div>
                 <NavBar />
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <br />
                     <Typography color="primary" variant="h4">
                     Welcome to Itty Bizzy, {this.props.user.name}!
                     </Typography>
@@ -97,9 +100,10 @@ class _UserDash extends Component {
                         Your Itty Bizzy
                     </Typography>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
-                        {this.renderMyBizCard()}
                         {this.bizInfo()}
+                        {this.renderMyBizCard()}
                     </Grid>
+                    {/* {this.renderBizForm()} */}
                 </Paper>
                 <Invoices currentUser={this.props.user} received_invoices={this.props.received_invoices} />
             </div>

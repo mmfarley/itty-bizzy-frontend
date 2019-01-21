@@ -6,7 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import AddIcon from '@material-ui/icons/Add';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-
+import Icon from '@material-ui/core/Icon';
 import React, { Component } from "react";
 import { signup } from '../state/actions/actions'
 import { connect } from 'react-redux';
@@ -32,9 +32,23 @@ class _Signup extends Component {
         this.props.signup(this.state)
     }
 
+    errorBox() {
+        if (this.props.login_error) {
+            return (
+                <Paper style={{ padding: 10, margin: 60, maxWidth: 250 }} align="center">
+                    <Icon color="error" style={{ fontSize: 40 }}>error</Icon>
+                    <Typography color="textSecondary">
+                        {this.props.login_error}
+                    </Typography>
+                </Paper>
+            )
+        }
+    }
+
     render() {
         return (
             <div align="center">
+                {this.errorBox()}
                 <Paper style={{ padding: 40, margin: 100, maxWidth: 420 }} align="center">
                     <Avatar >
                         <AddIcon />
@@ -70,5 +84,8 @@ class _Signup extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    login_error: state.loginError
+})
 
-export const Signup = connect(null, { signup })(_Signup);
+export const Signup = connect(mapStateToProps, { signup })(_Signup);

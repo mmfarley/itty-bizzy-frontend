@@ -13,7 +13,7 @@ class _NavBar extends Component {
 
     render() {
         return (
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
                     <Typography style={{ flexGrow: 1 }} onClick={() => {
                         history.push('/user-dash')

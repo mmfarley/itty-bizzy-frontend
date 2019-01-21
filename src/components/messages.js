@@ -37,6 +37,7 @@ class _Messages extends Component {
             <div>
                 <NavBar />
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
+                    <br />
                     <Typography color="primary" variant="h4">Messages</Typography><br />
                     <Icon color="primary" style={{ fontSize: 60 }}>forum</Icon>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >

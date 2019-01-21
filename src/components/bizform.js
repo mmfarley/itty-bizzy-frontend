@@ -19,7 +19,7 @@ class _BizForm extends Component {
         user_id: this.props.user.id
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (this.props.biz) {
             console.log("inside compontwillmount in bizform")
             this.setState({
@@ -40,12 +40,17 @@ class _BizForm extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
+        if(this.props.biz){
+            this.props.editBiz({...this.state, id: this.props.biz.id})
+        }else{
+            this.props.makeBiz(this.state)
+        }
         
     }
 
 
     render() {
-        // console.log("in biz form", this.props.biz.name)
+        console.log("in biz form", this.state.name)
         return (
             <form onSubmit={e => this.handleOnSubmit(e)}>
                 <FormControl margin="normal" required fullWidth>

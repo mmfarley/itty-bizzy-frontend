@@ -3,7 +3,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
 import { BizCard } from './bizcard'
 import { NavBar } from './navbar'
 import { getBizzys } from '../state/actions/actions'
@@ -43,6 +42,7 @@ class _FindBiz extends Component {
             <div>
                 <NavBar />
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <br />
                     <Typography color="primary" variant="h4">
                         Find an Itty Bizzy near you!
                     </Typography>

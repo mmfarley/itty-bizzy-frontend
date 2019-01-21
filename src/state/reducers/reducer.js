@@ -1,9 +1,8 @@
 import { redirect } from '../history'
 
-import { MAKE_TEST_FALSE, 
-    MAKE_TEST_TRUE, 
-    LOGIN_USER, 
+import { LOGIN_USER, 
     LOGOUT_USER,
+    LOGIN_ERROR,
     GET_CONVERSATIONS,
     MARK_AS_PAID,
     GET_INVOICES,
@@ -16,13 +15,6 @@ export const reducer = function (currentState, action) {
     const newState = { ...currentState }
 
     switch (action.type) {
-        case MAKE_TEST_FALSE:
-            newState.test = false;
-            break;
-        case MAKE_TEST_TRUE:
-            newState.test = true;
-            break;
-
         case LOGIN_USER:
             localStorage.setItem("token", action.payload.token)
             localStorage.setItem("user", JSON.stringify(action.payload.user))
@@ -32,6 +24,9 @@ export const reducer = function (currentState, action) {
         case LOGOUT_USER:
             localStorage.clear()
             newState.currentUser = {}
+            break;
+        case LOGIN_ERROR:
+            newState.loginError = action.payload.error
             break;
 
         case GET_CONVERSATIONS:

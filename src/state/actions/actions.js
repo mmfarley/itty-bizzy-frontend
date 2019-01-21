@@ -1,8 +1,7 @@
 import {
-    MAKE_TEST_FALSE,
-    MAKE_TEST_TRUE,
     LOGIN_USER,
     LOGOUT_USER,
+    LOGIN_ERROR,
     GET_CONVERSATIONS,
     SEND_MESSAGE,
     MARK_AS_PAID,
@@ -15,18 +14,6 @@ import {
 
 const API = 'http://localhost:3000/api/v1/'
 
-export const makeFalse = () => {
-    return {
-        type: MAKE_TEST_FALSE
-    }
-}
-
-export const makeTrue = () => {
-    return{
-        type: MAKE_TEST_TRUE
-    }
-}
-
 export const login = (loggingUser) => {
     return function (dispatch) {
         fetch(`${API}auth`, {
@@ -38,10 +25,15 @@ export const login = (loggingUser) => {
             body: JSON.stringify(loggingUser)
         })
             .then(resp => resp.json())
-            .then(user => dispatch({ type: LOGIN_USER, payload: user }))
+            .then(result => {
+                if (result.error) {
+                    dispatch({ type: LOGIN_ERROR, payload: result })
+                }else{
+                    dispatch({ type: LOGIN_USER, payload: result })
+                }
+            })
     }
 }
-
 
 export const signup = (loggingUser) => {
     return function (dispatch) {
@@ -54,7 +46,13 @@ export const signup = (loggingUser) => {
             body: JSON.stringify(loggingUser)
         })
             .then(resp => resp.json())
-            .then(user => dispatch({ type: LOGIN_USER, payload: user }))
+            .then(result => {
+                if (result.error) {
+                    dispatch({ type: LOGIN_ERROR, payload: result })
+                } else {
+                    dispatch({ type: LOGIN_USER, payload: result })
+                }
+            })
     }
 }
 

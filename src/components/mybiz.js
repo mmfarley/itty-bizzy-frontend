@@ -5,9 +5,7 @@ import { connect } from 'react-redux'
 import Invoices from "./invoices";
 import { getInvoices } from '../state/actions/actions'
 import { getMyBiz } from '../state/actions/actions'
-import { editBiz } from '../state/actions/actions'
-import { makeBiz } from '../state/actions/actions'
-import {BizCard} from "./bizcard";
+import { BizCard } from "./bizcard";
 import { BizForm } from "./bizform";
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
@@ -18,6 +16,10 @@ import { NavBar } from './navbar'
 
 
 class _MyBiz extends Component {
+
+    state={
+        my_biz: this.props.my_biz
+    }
 
     componentWillMount(){
         this.props.getMyBiz(this.props.user.id)
@@ -43,19 +45,11 @@ class _MyBiz extends Component {
 
     render() {
 
-        // IF NO PROPS ARE SENT, RENDER CREATE BUSINESS FORM SEGMENTS
-        // REUSE THESE FORM SEGMENTS FOR EDITING BUISINESS
-
-        // MAKE FUNCTION(S) THAT CHECKS TO SEE IF THE CURRENT USER MATCHES THE BIZ USER
-        // IF THEY DO, RENDER FORMS BENEATH EACH SEGMENT TO EDIT BIZ
-
-        //HAVE A MY_BIZ STORE STATE ITEM, IF IT EXISTS AND
-        //HAS CLIENTS, RENDER FORM THAT ALLOWS USER TO BILL THEIR CLIENTS
-
         return (
             <div>
                 <NavBar />
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
+                    <br />
                     <Typography color="Primary" variant="h4">
                         Your Itty Bizzy
                     </Typography><br />
@@ -79,4 +73,4 @@ const mapStateToProps = (state) => ({
     sent_invoices: state.sent_invoices
 })
 
-export const MyBiz = connect(mapStateToProps, {editBiz, makeBiz, getMyBiz, getInvoices})(_MyBiz);
+export const MyBiz = connect(mapStateToProps, {getMyBiz, getInvoices})(_MyBiz);
