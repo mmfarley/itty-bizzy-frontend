@@ -8,7 +8,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-
 import React, { Component } from "react";
 import { login } from '../state/actions/actions'
 import { connect } from 'react-redux';
@@ -31,7 +30,6 @@ class _Login extends Component {
     handleOnSubmit = e => {
         e.preventDefault()
         this.props.login(this.state)
-        // history.push('/user-dash')
     }
 
     render() {

@@ -7,7 +7,7 @@ import { Signup } from './components/signup'
 import {UserDash} from './components/userdash'
 import {Messages} from './components/messages'
 import {MyBiz} from './components/mybiz'
-import FindBiz from './components/findbiz'
+import {FindBiz} from './components/findbiz'
 import Welcome from './components/welcome'
 import { PrivateRoute } from './components/privateroute'
 import { MuiThemeProvider } from '@material-ui/core/styles';
