@@ -13,17 +13,20 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import { NavBar } from './navbar'
+import { getClients } from '../state/actions/actions'
 
 
 class _MyBiz extends Component {
 
-    state={
-        my_biz: this.props.my_biz
-    }
+    // state={
+    //     my_biz: this.props.my_biz
+    // }
 
     componentWillMount(){
         this.props.getMyBiz(this.props.user.id)
         this.props.getInvoices(this.props.user.id)
+        this.props.getClients(this.props.my_biz.id)
+
     }
 
     renderBizCard = () => {
@@ -40,6 +43,16 @@ class _MyBiz extends Component {
             return <BizForm biz={this.props.my_biz} />
         }else{
             return <BizForm />
+        }
+    }
+
+    renderClientsList = () => {
+        if (this.props.clients) {
+            return <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <ul>
+                    {this.props.clients.map((client) => (<li>{client.name}</li>))}
+                </ul>
+            </Paper>
         }
     }
 
@@ -62,6 +75,7 @@ class _MyBiz extends Component {
                     {this.renderBizForm()}
                 </Paper>
                 <Invoices currentUser={this.props.user} sent_invoices={this.props.sent_invoices}/>
+                {this.renderClientsList()}
             </div>
         );
     }
@@ -70,7 +84,8 @@ class _MyBiz extends Component {
 const mapStateToProps = (state) => ({
     user: state.currentUser,
     my_biz: state.myBiz,
-    sent_invoices: state.sent_invoices
+    sent_invoices: state.sent_invoices,
+    clients: state.clients
 })
 
-export const MyBiz = connect(mapStateToProps, {getMyBiz, getInvoices})(_MyBiz);
+export const MyBiz = connect(mapStateToProps, {getMyBiz, getInvoices, getClients})(_MyBiz);

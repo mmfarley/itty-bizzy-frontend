@@ -8,7 +8,8 @@ import { LOGIN_USER,
     GET_INVOICES,
     EDIT_BIZ,
     GET_BIZZYS,
-    GET_MY_BIZ
+    GET_MY_BIZ,
+    GET_CLIENTS
  } from '../actions/types';
 
 export const reducer = function (currentState, action) {
@@ -56,6 +57,10 @@ export const reducer = function (currentState, action) {
         case EDIT_BIZ:
             console.log("EDIT_BIZ and MAKE_BIZ action.payload", action.payload)
             newState.myBiz = action.payload
+        break;
+        case GET_CLIENTS:
+            console.log("GET_CLIENTS action.payoad", action.payload)
+            newState.clients = action.payload
         break;
     }
     return newState

@@ -9,7 +9,7 @@ import {
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
-    MAKE_BIZ
+    GET_CLIENTS
 } from "./types";
 
 const API = 'http://localhost:3000/api/v1/'
@@ -166,14 +166,26 @@ export const getBizzys = () => {
 
 //make custom route for this. model after messages custom route. 
 //NOTE THAT RELATIONSHIP IS DIFFERENT. SHOULD BE EASIER
-export const getMyBiz = (id) => {
+export const getMyBiz = (user_id) => {
     return function (dispatch) {
-        fetch(`${API}businesses/user/${id}`, {
+        fetch(`${API}businesses/user/${user_id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
             .then(resp => resp.json())
             .then(myBiz => dispatch({ type: GET_MY_BIZ, payload: myBiz }))
+    }
+}
+
+export const getClients = (biz_id) => {
+    return function (dispatch) {
+        fetch(`${API}clients/users/${biz_id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(clients => dispatch({ type: GET_CLIENTS, payload: clients }))
     }
 }
