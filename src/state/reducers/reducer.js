@@ -9,6 +9,7 @@ import { LOGIN_USER,
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
+    ADD_CLIENT,
     GET_CLIENTS
  } from '../actions/types';
 
@@ -49,19 +50,27 @@ export const reducer = function (currentState, action) {
         case GET_BIZZYS:
             // console.log("GET_BIZZYS action.payload", action.payload)
             newState.bizzys = action.payload
-        break;
+            break;
         case GET_MY_BIZ:
             console.log("GET_MY_BIZ action.payoad", action.payload)
-            newState.myBiz = action.payload[0]
-        break;
+            localStorage.setItem("myBiz", JSON.stringify(action.payload[0]))
+            newState.my_biz = action.payload[0]
+            break;
         case EDIT_BIZ:
             console.log("EDIT_BIZ and MAKE_BIZ action.payload", action.payload)
-            newState.myBiz = action.payload
-        break;
+            newState.my_biz = action.payload
+            break;
         case GET_CLIENTS:
             console.log("GET_CLIENTS action.payoad", action.payload)
+            localStorage.setItem("clients", JSON.stringify(action.payload))
             newState.clients = action.payload
-        break;
+            break;
+        case ADD_CLIENT:
+            console.log("ADD_CLIENT action.payoad", action.payload)
+            newState = {...newState, clients: [...newState.clients, action.payload]}
+            // localStorage.setItem("clients", JSON.stringify(newState.clients))
+            break;
+
     }
     return newState
 }

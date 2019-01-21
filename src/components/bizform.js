@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 
 class _BizForm extends Component {
@@ -21,7 +22,7 @@ class _BizForm extends Component {
 
     componentDidMount() {
         if (this.props.biz) {
-            console.log("inside compontwillmount in bizform")
+            console.log("inside compontdidmount in bizform")
             this.setState({
                 name: this.props.biz.name,
                 description: this.props.biz.description,
@@ -48,48 +49,61 @@ class _BizForm extends Component {
         
     }
 
+    editOrCreate = () => {
+        if(this.props.biz){
+            return "Edit your Itty Bizzy"
+        }else{
+            return "Create your Itty Bizzy"
+        }
+    }
+
 
     render() {
-        console.log("in biz form", this.state.name)
         return (
-            <form onSubmit={e => this.handleOnSubmit(e)}>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>
-                    <Input onChange={this.handleOnChange} id="name" name="name" value={this.state.name} />
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="service_type">Service Type</InputLabel>
-                    <Input onChange={this.handleOnChange} id="service_type" name="service_type" value={this.state.service_type} />
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="hourly_rate">Hourly Rate</InputLabel>
-                    <Input onChange={this.handleOnChange} name="hourly_rate" type="hourly_rate" value={this.state.hourly_rate} />
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <TextField
-                        onChange={this.handleOnChange}
-                        multiline
-                        label="Description *"
-                        margin="normal"
-                        value={this.state.description}
-                        name="description"
-                         />
-                </FormControl>
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                >
-                    Done
-                </Button>
-            </form>
+            <div>
+                <Typography color="Primary" variant="h4">
+                    {this.editOrCreate()}
+                </Typography>
+                <form onSubmit={e => this.handleOnSubmit(e)}>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>
+                        <Input onChange={this.handleOnChange} id="name" name="name" value={this.state.name} />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="service_type">Service Type</InputLabel>
+                        <Input onChange={this.handleOnChange} id="service_type" name="service_type" value={this.state.service_type} />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="hourly_rate">Hourly Rate</InputLabel>
+                        <Input onChange={this.handleOnChange} name="hourly_rate" type="hourly_rate" value={this.state.hourly_rate} />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <TextField
+                            onChange={this.handleOnChange}
+                            multiline
+                            label="Description *"
+                            margin="normal"
+                            value={this.state.description}
+                            name="description"
+                            />
+                    </FormControl>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                    >
+                        Done
+                    </Button>
+                </form>
+            </div>
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-    user: state.currentUser
+    user: state.currentUser,
+    biz: state.my_biz
 })
 
 export const BizForm = connect(mapStateToProps, { editBiz, makeBiz })(_BizForm);

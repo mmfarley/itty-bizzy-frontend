@@ -51,7 +51,8 @@ class _Messages extends Component {
 
 const mapStateToProps = (state) => ({
     conversations: state.conversations,
-    user: state.currentUser
+    user: state.currentUser,
+    my_biz: state.my_biz
 })
 
 export const Messages = connect(mapStateToProps, { getConversations })(_Messages);

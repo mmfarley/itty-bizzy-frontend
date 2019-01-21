@@ -33,14 +33,13 @@ class _InvoiceForm extends Component {
     render() {
         return (
             <div>
-                <Typography variant="h6" color="primary">Send Invoice to: {this.props.billed_user_name}</Typography>
                 <form onSubmit={e => this.handleOnSubmit(e)}>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="amount">Amount</InputLabel>
                         <Input onChange={this.handleOnChange} id="amount" name="amount" value={this.state.amount} />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="due_date">Due Date</InputLabel>
+                        <InputLabel htmlFor="due_date">Due Date (mm/dd/yyyy)</InputLabel>
                         <Input onChange={this.handleOnChange} name="due_date" type="due_date" value={this.state.due_date} />
                     </FormControl>
                     <Button

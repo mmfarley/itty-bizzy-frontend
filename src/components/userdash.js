@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
 import {redirect} from "../state/history";
-import Invoices from "./invoices";
+import {Invoices} from "./invoices";
 import { getInvoices } from '../state/actions/actions'
 import { getMyBiz } from '../state/actions/actions'
 import { getBizzys } from '../state/actions/actions'
+import { getClients } from '../state/actions/actions'
 import {BizCard} from "./bizcard";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { NavBar } from './navbar'
-import { BizForm } from "./bizform";
 
 
 class _UserDash extends Component {
@@ -22,6 +22,7 @@ class _UserDash extends Component {
         this.props.getInvoices(this.props.user.id)
         this.props.getBizzys()
         this.props.getMyBiz(this.props.user.id)
+        this.props.getClients(this.props.my_biz.id)
     }
 
     generateBigIconLinks = (link, icon, text) => {
@@ -76,7 +77,7 @@ class _UserDash extends Component {
     }
 
     render() {
-       
+       console.log("my biz in user", this.props.my_biz)
         return (
             <div>
                 <NavBar />
@@ -103,7 +104,6 @@ class _UserDash extends Component {
                         {this.bizInfo()}
                         {this.renderMyBizCard()}
                     </Grid>
-                    {/* {this.renderBizForm()} */}
                 </Paper>
                 <Invoices currentUser={this.props.user} received_invoices={this.props.received_invoices} />
             </div>
@@ -114,8 +114,8 @@ class _UserDash extends Component {
 const mapStateToProps = (state) => ({
     user: state.currentUser,
     received_invoices: state.received_invoices,
-    my_biz: state.myBiz,
+    my_biz: state.my_biz,
     bizzys: state.bizzys
 })
 
-export const UserDash = connect(mapStateToProps, { getInvoices, getMyBiz, getBizzys })(_UserDash);
+export const UserDash = connect(mapStateToProps, { getInvoices, getMyBiz, getBizzys, getClients })(_UserDash);

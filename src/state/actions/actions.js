@@ -9,7 +9,8 @@ import {
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
-    GET_CLIENTS
+    GET_CLIENTS,
+    ADD_CLIENT
 } from "./types";
 
 const API = 'http://localhost:3000/api/v1/'
@@ -187,5 +188,21 @@ export const getClients = (biz_id) => {
         })
             .then(resp => resp.json())
             .then(clients => dispatch({ type: GET_CLIENTS, payload: clients }))
+    }
+}
+
+export const addClient = (client) => {
+    return function (dispatch) {
+        fetch(`${API}clients`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(client)
+        })
+            .then(resp => resp.json())
+            .then(client => dispatch({ type: ADD_CLIENT, payload: client }))
     }
 }

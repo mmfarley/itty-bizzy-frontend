@@ -13,6 +13,7 @@ import { PrivateRoute } from './components/privateroute'
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from './components/theme'
 
+
 class App extends Component {
 
   render() {

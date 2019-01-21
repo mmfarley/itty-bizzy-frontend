@@ -3,9 +3,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { InvoiceCard } from './invoicecard'
+import { connect } from 'react-redux';
 
-
-class Invoices extends Component {
+class _Invoices extends Component {
 
 
     generateInvoiceCards = (invoices) => {
@@ -51,4 +51,8 @@ class Invoices extends Component {
     }
 }
 
-export default Invoices;
+const mapStateToProps = (state) => ({
+    user: state.currentUser
+})
+
+export const Invoices = connect(mapStateToProps)(_Invoices);

@@ -22,5 +22,7 @@ export const MAKE_BIZ = 'MAKE_BIZ'
 export const GET_BIZZYS = 'GET_BIZZYS'
 export const GET_MY_BIZ = 'GET_MY_BIZ'
 export const GET_CLIENTS = 'GET_CLIENTS'
+export const ADD_CLIENT = 'ADD_CLIENT'
+
 
 
