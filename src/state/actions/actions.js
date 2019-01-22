@@ -6,6 +6,7 @@ import {
     SEND_MESSAGE,
     MARK_AS_PAID,
     GET_INVOICES,
+    SEND_INVOICE,
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
@@ -121,6 +122,22 @@ export const getInvoices = (user_id) => {
         })
             .then(resp => resp.json())
             .then(invoices => dispatch({ type: GET_INVOICES, payload: invoices }))
+    }
+}
+
+export const sendInvoice = (invoice) => {
+    return function (dispatch) {
+        fetch(`${API}bills`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(invoice)
+        })
+            .then(resp => resp.json())
+            .then(invoice => dispatch({ type: SEND_INVOICE, payload: invoice }))
     }
 }
 

@@ -6,8 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-// import { sendInvoice } from '../state/actions/actions'
+import { sendInvoice } from '../state/actions/actions'
 
 
 class _InvoiceForm extends Component {
@@ -27,7 +26,7 @@ class _InvoiceForm extends Component {
 //WORKING HERE
     handleOnSubmit = e => {
         e.preventDefault()
-    //    this.props.sendInvoice(this.state)
+       this.props.sendInvoice(this.state)
     }
 
 
@@ -61,4 +60,4 @@ const mapStateToProps = (state) => ({
     user: state.currentUser
 })
 
-export const InvoiceForm = connect(mapStateToProps, { editBiz, makeBiz })(_InvoiceForm);
+export const InvoiceForm = connect(mapStateToProps, { editBiz, makeBiz, sendInvoice })(_InvoiceForm);
