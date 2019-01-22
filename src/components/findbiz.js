@@ -27,13 +27,16 @@ class _FindBiz extends Component {
         })
         //write function that takes in state 
         //when changed an filters by service_type
+
     }
 
     generateBizCards = () => {
         if (this.props.bizzys) {
-            return this.props.bizzys.map((biz) => (
-                <BizCard biz={biz} />
-            ))
+            return this.props.bizzys.map((biz) => {
+                if(biz.service_type.includes(this.state.search) || biz.name.includes(this.state.search)){
+                return <BizCard biz={biz} />
+                }
+            })
         }
     }
 
@@ -52,7 +55,7 @@ class _FindBiz extends Component {
                             margin="normal"
                             value={this.state.search}
                             name="search"
-                            placeholder="Filter by service type"
+                            placeholder="Search"
                             variant="outlined"
                             InputProps={{ 
                                 endAdornment: (
