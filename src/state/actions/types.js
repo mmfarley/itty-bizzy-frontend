@@ -11,9 +11,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const GET_CONVERSATIONS = 'GET_CONVERSATIONS'
 export const SEND_MESSAGE = 'SEND_MESSAGE'
 
-export const GET_BILLS = 'GET_BILLS'
-export const SEND_BILL = 'SEND_BILL'
-
+export const SEND_INVOICE = 'SEND_INVOICE'  //DO THIS FOR INVOICE FORM. SHOULD BE EASY POST TO BILLS WITH USER ID AND BILLED USER ID
 export const MARK_AS_PAID = 'MARK_AS_PAID'
 export const GET_INVOICES = 'GET_INVOICES'
 
@@ -21,6 +19,8 @@ export const EDIT_BIZ = 'EDIT_BIZ'
 export const MAKE_BIZ = 'MAKE_BIZ'
 export const GET_BIZZYS = 'GET_BIZZYS'
 export const GET_MY_BIZ = 'GET_MY_BIZ'
+export const DELETE_BIZ = 'DELETE_BIZ'
+
 export const GET_CLIENTS = 'GET_CLIENTS'
 export const ADD_CLIENT = 'ADD_CLIENT'
 export const REMOVE_CLIENT = 'REMOVE_CLIENT'

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
-import { InvoiceForm } from "./invoiceform";
 import { getClients } from '../state/actions/actions'
 import { getMessagedUsers } from '../state/actions/actions'
 import Typography from '@material-ui/core/Typography';
@@ -9,13 +8,13 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { addClient } from '../state/actions/actions'
-import { removeClient } from '../state/actions/actions'
+import { ClientCard } from './clientcard'
+
 
 
 class _Clients extends Component {
 
     state={
-        showInvoiceForm: false,
         showAddClientButton: true
     }
 
@@ -24,28 +23,6 @@ class _Clients extends Component {
         this.props.getClients(this.props.my_biz.id)
         this.props.getMessagedUsers(this.props.user.id)
         }
-    }
-
-    renderInvoiceForm = (client) => {
-        if (this.state.showInvoiceForm) {
-            return <InvoiceForm billed_user_id={client[0].id} billed_user_name={client[0].name} />
-        }
-    }
-
-    renderInvoiceButton = () => {
-        if (!this.state.showInvoiceForm) {
-            return <Button
-                onClick={() => this.handleInvoiceOnClick()}
-                fullWidth
-                variant="contained"
-                color="primary">
-                Invoice This Client
-                </Button>
-        }
-    }
-
-    handleInvoiceOnClick = () => {
-        this.setState({ showInvoiceForm: true })
     }
 
     renderAddClientButton = (messaged_user) => {
@@ -64,17 +41,6 @@ class _Clients extends Component {
         this.setState({showAddClientButton: false})
         this.props.addClient({ client_user_id: client_user_id, business_id: this.props.my_biz.id })
     }
-
-    renderRemoveClientButton = (client) => {
-        return <Button
-            onClick={() => this.props.removeClient(client[1])}
-            fullWidth
-            variant="contained"
-            color="primary">
-            Remove Client
-                </Button>
-    }
-
 
     renderSuggestedClients = () => {
         if(this.props.messaged_users && this.props.messaged_users.length > 0){
@@ -108,21 +74,7 @@ class _Clients extends Component {
                     Your Clients
                     </Typography>
                 <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
-                    {this.props.clients.map((client) => {
-                        return <Grid item xs >
-                            <Card style={{ padding: 15, margin: 30, width: 300, maxHeight: 400 }} align="center">
-                                <Typography color="primary" variant="h5">
-                                    {client[0].name}
-                                </Typography>
-                                <br />
-                                {this.renderRemoveClientButton(client)}
-                                <br /><br />
-                                {this.renderInvoiceButton()}
-                                {this.renderInvoiceForm(client)}
-                            </Card>
-                        </Grid>
-                        }
-                    )}
+                    {this.props.clients.map((client) => (<ClientCard client={client} />))}
                 </Grid>
                 {this.renderSuggestedClients()}
             </Paper>
@@ -157,4 +109,4 @@ const mapStateToProps = (state) => ({
     messaged_users: state.messaged_users
 })
 
-export const Clients = connect(mapStateToProps, {getClients, getMessagedUsers, addClient, removeClient} )(_Clients);
+export const Clients = connect(mapStateToProps, {getClients, getMessagedUsers, addClient } )(_Clients);

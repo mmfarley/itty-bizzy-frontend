@@ -54,10 +54,10 @@ export const reducer = function (currentState, action) {
             break;
         case GET_INVOICES:
             // console.log("invoices", action.payload)
-            if (action.payload.received_bills.length > 0){
+            if (action.payload.received_bills && action.payload.received_bills.length > 0){
                 newState.received_invoices = action.payload.received_bills
             }
-            if (action.payload.sent_bills.length > 0) {
+            if (action.payload.sent_bills && action.payload.sent_bills.length > 0) {
                 newState.sent_invoices = action.payload.sent_bills
             }
             break;
@@ -74,6 +74,10 @@ export const reducer = function (currentState, action) {
         case EDIT_BIZ:
             console.log("EDIT_BIZ and MAKE_BIZ action.payload", action.payload)
             newState.my_biz = action.payload
+            break;
+        case EDIT_BIZ:
+            console.log("DELETE_BIZ action.payload", action.payload)
+            newState.my_biz = null
             break;
         case GET_CLIENTS:
             console.log("GET_CLIENTS action.payoad", action.payload)

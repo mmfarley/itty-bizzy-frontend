@@ -9,6 +9,7 @@ import {
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
+    DELETE_BIZ,
     GET_CLIENTS,
     ADD_CLIENT,
     GET_MESSAGED_USERS,
@@ -179,6 +180,22 @@ export const getMyBiz = (user_id) => {
         })
             .then(resp => resp.json())
             .then(myBiz => dispatch({ type: GET_MY_BIZ, payload: myBiz }))
+    }
+}
+
+export const deleteBiz = (biz_id) => {
+    return function (dispatch) {
+        fetch(`${API}businesses/${biz_id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(biz_id)
+        })
+            .then(resp => resp.json())
+            .then(biz => dispatch({ type: DELETE_BIZ, payload: biz }))
     }
 }
 

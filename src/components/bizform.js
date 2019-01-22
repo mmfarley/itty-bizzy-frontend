@@ -8,6 +8,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { deleteBiz } from '../state/actions/actions'
 
 
 class _BizForm extends Component {
@@ -56,6 +57,19 @@ class _BizForm extends Component {
         }
     }
 
+    renderDeleteButton = () => {
+        if (this.props.biz) {
+            return <Button
+                onClick={()=> this.props.deleteBiz(this.props.biz.id)}
+                fullWidth
+                variant="contained"
+                color="primary"
+            >
+                Delete My Itty Bizzy
+                    </Button>
+        }
+    }
+
 
     render() {
         return (
@@ -95,6 +109,8 @@ class _BizForm extends Component {
                         Done
                     </Button>
                 </form>
+                <br />
+                {this.renderDeleteButton()}
             </div>
         );
     }
@@ -105,4 +121,4 @@ const mapStateToProps = (state) => ({
     biz: state.my_biz
 })
 
-export const BizForm = connect(mapStateToProps, { editBiz, makeBiz })(_BizForm);
+export const BizForm = connect(mapStateToProps, { editBiz, makeBiz, deleteBiz })(_BizForm);
