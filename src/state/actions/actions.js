@@ -96,7 +96,7 @@ export const sendMessage = (message) => {
     }
 }
 
-export const markAsPaid = (id) => {
+export const markAsPaid = (id, user_id) => {
     return function (dispatch) {
         fetch(`${API}bills/${id}`, {
             method: "PATCH",
@@ -105,10 +105,13 @@ export const markAsPaid = (id) => {
                 Accept: "application/json",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({ is_paid: true })//check this syntax
+            body: JSON.stringify({ 
+                is_paid: true,
+                user_id: user_id
+             })
         })
             .then(resp => resp.json())
-            .then(() => dispatch({ type: MARK_AS_PAID }))
+            .then(invoices => dispatch({ type: GET_INVOICES, payload: invoices }))
     }
 }
 
@@ -137,7 +140,7 @@ export const sendInvoice = (invoice) => {
             body: JSON.stringify(invoice)
         })
             .then(resp => resp.json())
-            .then(invoice => dispatch({ type: SEND_INVOICE, payload: invoice }))
+            .then(invoices => dispatch({ type: GET_INVOICES, payload: invoices }))
     }
 }
 
@@ -186,8 +189,6 @@ export const getBizzys = () => {
     }
 }
 
-//make custom route for this. model after messages custom route. 
-//NOTE THAT RELATIONSHIP IS DIFFERENT. SHOULD BE EASIER
 export const getMyBiz = (user_id) => {
     return function (dispatch) {
         fetch(`${API}businesses/user/${user_id}`, {
@@ -240,11 +241,11 @@ export const addClient = (client) => {
             body: JSON.stringify(client)
         })
             .then(resp => resp.json())
-            .then(client => dispatch({ type: ADD_CLIENT, payload: client }))
+            .then(clients => dispatch({ type: GET_CLIENTS, payload: clients }))
     }
 }
 
-export const removeClient = (client_id) => {
+export const removeClient = (client_id, business_id) => {
     return function (dispatch) {
         fetch(`${API}clients/${client_id}`, {
             method: "DELETE",
@@ -253,10 +254,13 @@ export const removeClient = (client_id) => {
                 Accept: "application/json",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify(client_id)
+            body: JSON.stringify({
+                id: client_id,
+                business_id: business_id
+            })
         })
             .then(resp => resp.json())
-            .then(client => dispatch({ type: REMOVE_CLIENT, payload: client }))
+            .then(clients => dispatch({ type: GET_CLIENTS, payload: clients }))
     }
 }
 

@@ -49,9 +49,6 @@ export const reducer = function (currentState, action) {
         case GET_CONVERSATIONS:
             newState.conversations = action.payload.conversations
             break;
-
-        case MARK_AS_PAID:
-            break;
         case GET_INVOICES:
             // console.log("invoices", action.payload)
             if (action.payload.received_bills && action.payload.received_bills.length > 0){
@@ -83,15 +80,6 @@ export const reducer = function (currentState, action) {
             console.log("GET_CLIENTS action.payoad", action.payload)
             localStorage.setItem("clients", JSON.stringify(action.payload))
             newState.clients = action.payload
-            break;
-        case ADD_CLIENT:
-            console.log("ADD_CLIENT action.payoad", action.payload)
-            // newState.clients = {...newState.clients.push(action.payload)}
-            // redirect('/my-biz')
-            break;
-        case REMOVE_CLIENT:
-            console.log("REMOVE_CLIENT action.payoad", action.payload)
-            redirect('/my-biz')
             break;
         case GET_MESSAGED_USERS:
             console.log("GET_MESSAGED_USERS action.payoad", action.payload)

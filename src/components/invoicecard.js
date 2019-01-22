@@ -15,7 +15,7 @@ class _InvoiceCard extends Component {
     }
     
     handlePaidOnClick = () => {
-        this.props.markAsPaid(this.props.invoice.id)
+        this.props.markAsPaid(this.props.invoice.id, this.props.user.id)
     }
 
     renderMarkAsPaidButton = () => {

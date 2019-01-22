@@ -19,7 +19,7 @@ class _ClientCard extends Component {
 
     renderInvoiceForm = (client) => {
         if (this.state.showInvoiceForm) {
-            return <InvoiceForm billed_user_id={client[0].id} billed_user_name={client[0].name} />
+            return <InvoiceForm showInvoiceFormFalse={() => this.showInvoiceFormFalse()} billed_user_id={client[0].id} billed_user_name={client[0].name} />
         }
     }
 
@@ -39,9 +39,13 @@ class _ClientCard extends Component {
         this.setState({ showInvoiceForm: true })
     }
 
+    showInvoiceFormFalse = () => {
+        this.setState({ showInvoiceForm: false })
+    }
+
     renderRemoveClientButton = (client) => {
         return <Button
-            onClick={() => this.props.removeClient(client[1])}
+            onClick={() => this.props.removeClient(client[1], this.props.my_biz.id)}
             fullWidth
             variant="contained"
             color="primary">

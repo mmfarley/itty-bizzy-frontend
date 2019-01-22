@@ -25,6 +25,7 @@ class _Clients extends Component {
         }
     }
 
+    
     renderAddClientButton = (messaged_user) => {
         if(this.state.showAddClientButton){
             return <Button

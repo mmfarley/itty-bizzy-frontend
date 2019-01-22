@@ -27,6 +27,8 @@ class _InvoiceForm extends Component {
     handleOnSubmit = e => {
         e.preventDefault()
        this.props.sendInvoice(this.state)
+       this.setState({ amount: '', due_date: ''})
+       this.props.showInvoiceFormFalse()
     }
 
 
