@@ -12,7 +12,8 @@ import { LOGIN_USER,
     ADD_CLIENT,
     GET_CLIENTS,
     SIGNUP_USER,
-    GET_MESSAGED_USERS
+    GET_MESSAGED_USERS,
+    REMOVE_CLIENT
  } from '../actions/types';
 
 export const reducer = function (currentState, action) {
@@ -81,8 +82,12 @@ export const reducer = function (currentState, action) {
             break;
         case ADD_CLIENT:
             console.log("ADD_CLIENT action.payoad", action.payload)
-            newState = {...newState, clients: [...newState.clients, action.payload]}
-            // localStorage.setItem("clients", JSON.stringify(newState.clients))
+            // newState.clients = {...newState.clients.push(action.payload)}
+            // redirect('/my-biz')
+            break;
+        case REMOVE_CLIENT:
+            console.log("REMOVE_CLIENT action.payoad", action.payload)
+            redirect('/my-biz')
             break;
         case GET_MESSAGED_USERS:
             console.log("GET_MESSAGED_USERS action.payoad", action.payload)

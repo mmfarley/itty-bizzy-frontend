@@ -12,7 +12,8 @@ import {
     GET_CLIENTS,
     ADD_CLIENT,
     GET_MESSAGED_USERS,
-    SIGNUP_USER
+    SIGNUP_USER,
+    REMOVE_CLIENT
 } from "./types";
 
 const API = 'http://localhost:3000/api/v1/'
@@ -206,6 +207,22 @@ export const addClient = (client) => {
         })
             .then(resp => resp.json())
             .then(client => dispatch({ type: ADD_CLIENT, payload: client }))
+    }
+}
+
+export const removeClient = (client_id) => {
+    return function (dispatch) {
+        fetch(`${API}clients/${client_id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(client_id)
+        })
+            .then(resp => resp.json())
+            .then(client => dispatch({ type: REMOVE_CLIENT, payload: client }))
     }
 }
 
