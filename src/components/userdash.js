@@ -22,7 +22,9 @@ class _UserDash extends Component {
         this.props.getInvoices(this.props.user.id)
         this.props.getBizzys()
         this.props.getMyBiz(this.props.user.id)
-        this.props.getClients(this.props.my_biz.id)
+        if(this.props.my_biz){
+            this.props.getClients(this.props.my_biz.id)
+        }  
     }
 
     generateBigIconLinks = (link, icon, text) => {

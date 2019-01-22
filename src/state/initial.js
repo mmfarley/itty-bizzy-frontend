@@ -4,11 +4,19 @@ let clients;
 
 try{
     currentUser = JSON.parse(localStorage.getItem("user"))
-    clients = JSON.parse(localStorage.getItem("clients"))
-    my_biz = JSON.parse(localStorage.getItem("myBiz"))
 }catch(error){
     currentUser = null
+}
+
+try {
+    clients = JSON.parse(localStorage.getItem("clients"))
+} catch (error) {
     clients = null
+}
+
+try {
+    my_biz = JSON.parse(localStorage.getItem("myBiz"))
+} catch (error) {
     my_biz = null
 }
 

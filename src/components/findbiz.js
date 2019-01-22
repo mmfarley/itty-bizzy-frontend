@@ -52,6 +52,7 @@ class _FindBiz extends Component {
                             margin="normal"
                             value={this.state.search}
                             name="search"
+                            placeholder="Filter by service type"
                             variant="outlined"
                             InputProps={{ 
                                 endAdornment: (

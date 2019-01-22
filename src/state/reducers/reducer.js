@@ -10,7 +10,9 @@ import { LOGIN_USER,
     GET_BIZZYS,
     GET_MY_BIZ,
     ADD_CLIENT,
-    GET_CLIENTS
+    GET_CLIENTS,
+    SIGNUP_USER,
+    GET_MESSAGED_USERS
  } from '../actions/types';
 
 export const reducer = function (currentState, action) {
@@ -21,11 +23,23 @@ export const reducer = function (currentState, action) {
             localStorage.setItem("token", action.payload.token)
             localStorage.setItem("user", JSON.stringify(action.payload.user))
             newState.currentUser = action.payload.user
+            newState.loginError = null
             redirect('/user-dash')
+            break;
+        case SIGNUP_USER:
+            console.log("SIGN_UP hit")
+            redirect('/login')
             break;
         case LOGOUT_USER:
             localStorage.clear()
-            newState.currentUser = {}
+            newState.currentUser = null
+            newState.conversations = null
+            newState.received_invoices = null
+            newState.sent_invoices = null
+            newState.bizzys = null
+            newState.my_biz = null
+            newState.clients = null
+            newState.messaged_users = null
             break;
         case LOGIN_ERROR:
             newState.loginError = action.payload.error
@@ -69,6 +83,10 @@ export const reducer = function (currentState, action) {
             console.log("ADD_CLIENT action.payoad", action.payload)
             newState = {...newState, clients: [...newState.clients, action.payload]}
             // localStorage.setItem("clients", JSON.stringify(newState.clients))
+            break;
+        case GET_MESSAGED_USERS:
+            console.log("GET_MESSAGED_USERS action.payoad", action.payload)
+            newState.messaged_users = action.payload
             break;
 
     }

@@ -13,6 +13,7 @@ import { login } from '../state/actions/actions'
 import { connect } from 'react-redux';
 import history from "../state/history";
 import Icon from '@material-ui/core/Icon';
+import { NavBar } from './navbar'
 
 
 class _Login extends Component {
@@ -50,6 +51,7 @@ class _Login extends Component {
     render() {
         return (
             <div align="center">
+            <NavBar />
                 {this.errorBox()}
                 <Paper style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
                     <Avatar >

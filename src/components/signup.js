@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import React, { Component } from "react";
 import { signup } from '../state/actions/actions'
+import { login } from '../state/actions/actions'
 import { connect } from 'react-redux';
 import history from "../state/history";
 
@@ -30,6 +31,7 @@ class _Signup extends Component {
     handleOnSubmit = e => {
         e.preventDefault()
         this.props.signup(this.state)
+        // this.props.login({email: this.state.email, password: this.state.password})
     }
 
     errorBox() {
@@ -88,4 +90,4 @@ const mapStateToProps = (state) => ({
     login_error: state.loginError
 })
 
-export const Signup = connect(mapStateToProps, { signup })(_Signup);
+export const Signup = connect(mapStateToProps, { signup, login })(_Signup);

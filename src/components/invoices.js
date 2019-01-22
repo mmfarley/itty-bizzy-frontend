@@ -6,7 +6,7 @@ import { InvoiceCard } from './invoicecard'
 import { connect } from 'react-redux';
 
 class _Invoices extends Component {
-
+//go throught coversations and get messaged users to add as clients
 
     generateInvoiceCards = (invoices) => {
         return invoices.map((invoice) => (

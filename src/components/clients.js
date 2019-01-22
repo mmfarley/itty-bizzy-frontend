@@ -15,7 +15,9 @@ class _Clients extends Component {
     }
 
     componentWillMount(){
+        if(this.props.my_biz){
         this.props.getClients(this.props.my_biz.id)
+        }
     }
 
     renderInvoiceForm = (client) => {

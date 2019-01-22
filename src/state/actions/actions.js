@@ -10,7 +10,9 @@ import {
     GET_BIZZYS,
     GET_MY_BIZ,
     GET_CLIENTS,
-    ADD_CLIENT
+    ADD_CLIENT,
+    GET_MESSAGED_USERS,
+    SIGNUP_USER
 } from "./types";
 
 const API = 'http://localhost:3000/api/v1/'
@@ -51,7 +53,7 @@ export const signup = (loggingUser) => {
                 if (result.error) {
                     dispatch({ type: LOGIN_ERROR, payload: result })
                 } else {
-                    dispatch({ type: LOGIN_USER, payload: result })
+                    dispatch({ type: SIGNUP_USER, payload: loggingUser })
                 }
             })
     }
@@ -204,5 +206,17 @@ export const addClient = (client) => {
         })
             .then(resp => resp.json())
             .then(client => dispatch({ type: ADD_CLIENT, payload: client }))
+    }
+}
+
+export const getMessagedUsers = (user_id) => {
+    return function (dispatch) {
+        fetch(`${API}messages/messaged-users/${user_id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(users => dispatch({ type: GET_MESSAGED_USERS, payload: users }))
     }
 }

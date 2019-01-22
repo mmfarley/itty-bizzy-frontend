@@ -18,6 +18,7 @@ import { getClients } from '../state/actions/actions'
 import { InvoiceForm } from "./invoiceform";
 import Card from '@material-ui/core/Card';
 import { Clients } from './clients'
+import { getMessagedUsers } from '../state/actions/actions'
 
 
 class _MyBiz extends Component {
@@ -30,8 +31,10 @@ class _MyBiz extends Component {
 
     componentDidMount(){
         this.props.getInvoices(this.props.user.id)
-        this.props.getClients(this.props.my_biz.id)
-
+        this.props.getMessagedUsers(this.props.user.id)
+        if(this.props.my_biz){
+            this.props.getClients(this.props.my_biz.id)
+        }
     }
 
     renderBizCard = () => {
@@ -65,7 +68,7 @@ class _MyBiz extends Component {
                     {this.renderBizForm()}
                 </Paper>
                 <Invoices sent_invoices={this.props.sent_invoices}/>
-                <Clients />
+                <Clients messaged_users={this.props.messaged_users}/>
             </div>
         );
     }
@@ -75,7 +78,8 @@ const mapStateToProps = (state) => ({
     user: state.currentUser,
     my_biz: state.my_biz,
     sent_invoices: state.sent_invoices,
-    clients: state.clients
+    clients: state.clients,
+    messaged_users: state.messaged_users
 })
 
-export const MyBiz = connect(mapStateToProps, {getInvoices, getClients })(_MyBiz);
+export const MyBiz = connect(mapStateToProps, {getInvoices, getClients, getMessagedUsers })(_MyBiz);
