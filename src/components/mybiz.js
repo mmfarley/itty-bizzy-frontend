@@ -51,6 +51,15 @@ class _MyBiz extends Component {
         }
     }
 
+    renderInvoiceAndClients = () => {
+        if(this.props.my_biz){
+            return <>
+                <Invoices sent_invoices={this.props.sent_invoices} />
+                <Clients messaged_users={this.props.messaged_users} />
+            </>
+        }
+    }
+
    
     render() {
 
@@ -67,8 +76,7 @@ class _MyBiz extends Component {
                 <Paper style={{ padding: 40, margin: 30 }} align="center">
                     {this.renderBizForm()}
                 </Paper>
-                <Invoices sent_invoices={this.props.sent_invoices}/>
-                <Clients messaged_users={this.props.messaged_users}/>
+                {this.renderInvoiceAndClients()}
             </div>
         );
     }

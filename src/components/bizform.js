@@ -22,7 +22,6 @@ class _BizForm extends Component {
 
     componentDidMount() {
         if (this.props.biz) {
-            console.log("inside compontdidmount in bizform")
             this.setState({
                 name: this.props.biz.name,
                 description: this.props.biz.description,
@@ -53,7 +52,7 @@ class _BizForm extends Component {
         if(this.props.biz){
             return "Edit your Itty Bizzy"
         }else{
-            return "Create your Itty Bizzy"
+            return "Create your Itty Bizzy to get started"
         }
     }
 

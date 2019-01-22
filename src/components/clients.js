@@ -43,7 +43,7 @@ class _Clients extends Component {
     }
 
     renderClientsList = () => {
-        if (this.props.clients) {
+        if (this.props.clients.length > 0) {
             return <Paper style={{ padding: 40, margin: 30 }} align="center">
                 <Typography color="Primary" variant="h4">
                     Your Clients
@@ -64,6 +64,16 @@ class _Clients extends Component {
                     )}
                 </Grid>
             </Paper>
+        }else{
+            return <Paper style={{ padding: 40, margin: 30 }} align="center">
+                    <Typography color="Primary" variant="h4">
+                        You do not have any clients
+                    </Typography>
+                    <br />
+                    <Typography color="textSecondary" variant="h6">
+                        You can add clients by their email, or you will be given the option to add anyone who has messaged you as a client.
+                    </Typography>
+                </Paper>
         }
     }
 
