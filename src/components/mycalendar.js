@@ -56,7 +56,7 @@ class _MyCalendar extends Component {
     render() {
         return (
             <div>
-                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="primary" variant="h4" align="center">
                         Your Calendar
                     </Typography>
@@ -66,7 +66,7 @@ class _MyCalendar extends Component {
                     <br />
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         <Grid item xs >
-                            <Card elevation="10" style={{ padding: 17, margin: 30, width: 400, height: 400 }} align="center">
+                            <Card elevation="15" style={{ padding: 17, margin: 30, width: 400, height: 400 }} align="center">
                                 <Typography color="primary" variant="h6" align="center">
                                     Click a date to see your appointments<br />or to schedule an appointment
                                 </Typography>
@@ -95,7 +95,7 @@ class _MyCalendar extends Component {
                         {this.mapAppointmentsToDate()}
                     </Grid>
                 </Paper>
-                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="Primary" variant="h4">
                         Appointments in the next week
                     </Typography>

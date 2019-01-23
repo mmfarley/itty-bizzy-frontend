@@ -11,7 +11,7 @@ class Welcome extends Component {
         
         return (
             <div>
-                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="primary" variant="h4" align="center">
                         Welcome to Itty Bizzy!
                     </Typography>

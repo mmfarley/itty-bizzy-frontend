@@ -26,13 +26,13 @@ class _MessageCard extends Component {
 
         return (
             <div>
-                <Card elevation="3" style={{ padding: 10, width: 300 }} align="center"> 
+                <Card elevation="7" style={{ padding: 10, width: 300 }} align="center"> 
                     <Typography variant="h6" color="primary">
                     {this.props.messaged_user.name}
                     </Typography>
                     <Icon color="primary" style={{ fontSize: 40 }}>person</Icon>
                 </Card>
-                <Card elevation="10" style={{ padding: 15, margin: 30, width: 300, maxHeight: 400, "overflowY": 'auto' }} align="center">
+                <Card elevation="15" style={{ padding: 15, margin: 30, width: 300, maxHeight: 400, "overflowY": 'auto' }} align="center">
                     {this.createMessages()}
                     <MessageForm 
                         messaged_user_id={this.props.messaged_user.id} 

@@ -60,7 +60,7 @@ class _AppointmentForm extends Component {
         console.log(this.props.date)
         return (
             <div>
-                <Card elevation="10" style={{ padding: 30, margin: 30, width: 400, height: 400 }} align="center">
+                <Card elevation="15" style={{ padding: 30, margin: 30, width: 400, height: 400 }} align="center">
                     <Typography color="primary" variant="h5" align="center">
                         Schedule an Appointment
                     </Typography>

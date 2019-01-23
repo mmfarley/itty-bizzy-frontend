@@ -38,7 +38,7 @@ class _Invoices extends Component {
 
         return (
             <div>
-                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="primary" variant="h4">
                     {this.invoiceHeaderType()}
                     </Typography>

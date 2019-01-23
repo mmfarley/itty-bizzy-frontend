@@ -43,7 +43,7 @@ class _BizCard extends Component {
     render() {
         return (
             <Grid item xs >
-                <Card elevation="10" style={{ padding: 15, margin: 30, width: 350, maxHeight: 600, "overflow-y": 'auto' }} align="center">
+                <Card elevation="15" style={{ padding: 15, margin: 30, width: 350, maxHeight: 600, "overflow-y": 'auto' }} align="center">
                     <CardContent >
                         <Typography variant="h6" color="primary">{this.props.biz.name}</Typography><br />
                         <Icon color="primary" style={{ fontSize: 60 }}>store</Icon><br /><br />

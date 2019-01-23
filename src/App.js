@@ -20,7 +20,6 @@ class App extends Component {
     return (
         <Router history={history}>
           <MuiThemeProvider theme={theme}>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
               <Switch>
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/login" component={Login} />

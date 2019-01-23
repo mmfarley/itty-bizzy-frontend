@@ -66,7 +66,7 @@ class _MyBiz extends Component {
         return (
             <div>
                 <NavBar />
-                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                     <br />
                     <Typography color="Primary" variant="h4">
                         Your Itty Bizzy
@@ -76,7 +76,7 @@ class _MyBiz extends Component {
                     <br />
                     {this.renderBizCard()}
                 </Paper>
-                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                     {this.renderBizForm()}
                 </Paper>
                 {this.renderCalendar()}

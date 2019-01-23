@@ -1,11 +1,9 @@
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React, { Component } from "react";
@@ -36,7 +34,7 @@ class _Login extends Component {
     errorBox() {
         if (this.props.login_error) {
             return (
-                <Paper style={{ padding: 10, margin: 60, maxWidth: 250 }} align="center">
+                <Paper elevation="24" style={{ padding: 10, margin: 60, maxWidth: 250 }} align="center">
                     <Icon color="error" style={{ fontSize: 40 }}>error</Icon>
                     <Typography color="textSecondary">
                     {this.props.login_error}
@@ -51,11 +49,10 @@ class _Login extends Component {
         return (
             <div align="center">
                 {this.errorBox()}
-                <Paper elevation="10" style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
-                    <Avatar >
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography align="center" component="h1" variant="h5">
+                <Paper elevation="24" style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
+                    <Icon color="primary" style={{ fontSize: 50 }}>lock</Icon>
+                    <br /><br />
+                    <Typography color="textSecondary" align="center" component="h1" variant="h5">
                         Sign in
             </Typography>
                     <form onSubmit={e => this.handleOnSubmit(e)}>
@@ -67,10 +64,7 @@ class _Login extends Component {
                             <InputLabel htmlFor="password">Password</InputLabel>
                             <Input onChange={this.handleOnChange} name="password" type="password" id="password" autoComplete="current-password" />
                         </FormControl>
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
+                        <br /><br />
                         <Button
                             type="submit"
                             fullWidth

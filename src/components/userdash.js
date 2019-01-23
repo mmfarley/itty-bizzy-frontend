@@ -34,7 +34,7 @@ class _UserDash extends Component {
     generateBigIconLinks = (link, icon, text) => {
         return <>
         <Grid item xs>
-                <Paper elevation="5" onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30, width: 300 }}>
+                <Paper elevation="10" onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30, width: 300 }}>
                 <Icon color="primary" style={{ fontSize: 60 }}>{icon}</Icon>
                 <br /><br />
                 <Typography color="textSecondary" variant="h5" align="center">
@@ -48,8 +48,8 @@ class _UserDash extends Component {
     fakeBizExample = () => {
         return {
             user_id: this.props.user.id,
-            name: "Itty Biz Example", 
-            service_type: "Service Type",
+            name: "Let's Get Bizzy", 
+            service_type: "Example",
             hourly_rate: 25,
             description: "This is where you'll give a brief background on your Itty Bizzy. How long you've been doing it, any specifics about your skills, etc."
         }
@@ -67,7 +67,7 @@ class _UserDash extends Component {
     bizInfo = () => {
         return <>
             <Grid item xs>
-                <Card elevation="10" style={{ padding: 15, margin: 30, width: 350, maxHeight: 600 }} align="center">
+                <Card elevation="15" style={{ padding: 15, margin: 30, width: 350, maxHeight: 600 }} align="center">
                     <CardContent>
                         <div onClick={() => redirect('/my-biz')}>
                         <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon><br /><br />
@@ -84,7 +84,7 @@ class _UserDash extends Component {
 
     renderFavoriteBizzys = () => {
         if(this.props.client_businesses){
-           return <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+           return <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                 <Typography color="primary" variant="h4">
                     Itty Bizzys you use
                 </Typography>
@@ -102,7 +102,7 @@ class _UserDash extends Component {
         return (
             <div>
                 <NavBar />
-                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                 <br /><br />
                     <Typography color="primary" variant="h3">
                     Welcome to Itty Bizzy, {this.props.user.name}!
@@ -115,7 +115,7 @@ class _UserDash extends Component {
                         <br />  keep track of invoicing, or search for an Itty Bizzy near you!
                     </Typography>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
-                        {this.generateBigIconLinks('/my-biz', "store", 'My Itty Biz')}
+                        {this.generateBigIconLinks('/my-biz', "store", 'My Itty Bizzy')}
                         {this.generateBigIconLinks('/messages', "forum", 'My Messages')}
                         {this.generateBigIconLinks('/find-biz', 'search', 'Find Itty Bizzys')}
                     </Grid>

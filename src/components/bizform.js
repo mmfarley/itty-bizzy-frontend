@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { deleteBiz } from '../state/actions/actions'
 import Icon from '@material-ui/core/Icon';
+import Paper from '@material-ui/core/Paper';
 
 
 class _BizForm extends Component {
@@ -80,40 +81,42 @@ class _BizForm extends Component {
                 </Typography>
                 <br />
                 <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon>
-                <form onSubmit={e => this.handleOnSubmit(e)}>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>
-                        <Input onChange={this.handleOnChange} id="name" name="name" value={this.state.name} />
-                    </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="service_type">Service Type</InputLabel>
-                        <Input onChange={this.handleOnChange} id="service_type" name="service_type" value={this.state.service_type} />
-                    </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="hourly_rate">Hourly Rate</InputLabel>
-                        <Input onChange={this.handleOnChange} name="hourly_rate" type="hourly_rate" value={this.state.hourly_rate} />
-                    </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <TextField
-                            onChange={this.handleOnChange}
-                            multiline
-                            label="Description *"
-                            margin="normal"
-                            value={this.state.description}
-                            name="description"
-                            />
-                    </FormControl>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                    >
-                        Done
-                    </Button>
-                </form>
-                <br />
-                {this.renderDeleteButton()}
+                <Paper elevation="15" style={{ padding: 40, margin: 30,  }} align="center">
+                    <form onSubmit={e => this.handleOnSubmit(e)}>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>
+                            <Input onChange={this.handleOnChange} id="name" name="name" value={this.state.name} />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="service_type">Service Type</InputLabel>
+                            <Input onChange={this.handleOnChange} id="service_type" name="service_type" value={this.state.service_type} />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="hourly_rate">Hourly Rate</InputLabel>
+                            <Input onChange={this.handleOnChange} name="hourly_rate" type="hourly_rate" value={this.state.hourly_rate} />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth>
+                            <TextField
+                                onChange={this.handleOnChange}
+                                multiline
+                                label="Description *"
+                                margin="normal"
+                                value={this.state.description}
+                                name="description"
+                                />
+                        </FormControl>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >
+                            Done
+                        </Button>
+                    </form>
+                    <br />
+                    {this.renderDeleteButton()}
+                </Paper>
             </div>
         );
     }

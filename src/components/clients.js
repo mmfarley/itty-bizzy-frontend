@@ -53,7 +53,7 @@ class _Clients extends Component {
                 <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                     {this.props.messaged_users.map((messaged_user) => {
                         return <Grid item xs >
-                            <Card style={{ padding: 15, margin: 30, width: 300, maxHeight: 400 }} align="center">
+                            <Card elevation="15" style={{ padding: 15, margin: 30, width: 300, maxHeight: 400 }} align="center">
                                 <Typography color="primary" variant="h5">
                                     {messaged_user.name}
                                 </Typography>

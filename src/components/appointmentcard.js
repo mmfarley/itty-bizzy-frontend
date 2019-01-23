@@ -36,7 +36,7 @@ class _AppointmentCard extends Component {
 
         return (
             <Grid item xs >
-                <Card elevation="10" style={{ padding: 15, margin: 15, width: 200, maxHeight: 300 }} align="center">
+                <Card elevation="15" style={{ padding: 15, margin: 15, width: 200, maxHeight: 300 }} align="center">
                     <Typography color="textSecondary" variant="h6">
                         {this.props.appointment[0].name}
                         <br />
