@@ -17,7 +17,6 @@ class _AppointmentForm extends Component {
         
         appointment_user_id: '',
         business_id: this.props.my_biz.id,
-        date: this.props.date,
         anchorEl: null,
         appointment_name: ''
         
@@ -46,7 +45,7 @@ class _AppointmentForm extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
-        this.props.setAppointment(this.state.appointment_user_id, this.state.business_id, this.state.date)
+        this.props.setAppointment(this.state.appointment_user_id, this.state.business_id, this.props.date)
         this.setState({appointment_user_id: ''})
         this.setState({ appointment_name: '' })
     }
@@ -58,6 +57,7 @@ class _AppointmentForm extends Component {
    }
 
     render() {
+        console.log(this.props.date)
         return (
             <div>
                 <Card elevation="10" style={{ padding: 30, margin: 30, width: 400, height: 400 }} align="center">
