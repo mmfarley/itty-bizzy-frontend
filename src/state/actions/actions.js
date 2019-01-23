@@ -10,7 +10,6 @@ import {
     DELETE_BIZ,
     GET_CLIENTS,
     GET_MESSAGED_USERS,
-    SIGNUP_USER,
     GET_APPOINTMENTS,
     GET_CLIENT_BUSINESSES
 } from "./types";
@@ -53,7 +52,7 @@ export const signup = (loggingUser) => {
                 if (result.error) {
                     dispatch({ type: LOGIN_ERROR, payload: result })
                 } else {
-                    dispatch({ type: SIGNUP_USER, payload: loggingUser })
+                    dispatch({ type: LOGIN_USER, payload: result })
                 }
             })
     }

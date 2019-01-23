@@ -28,7 +28,7 @@ class _AppointmentCard extends Component {
 
     renderMessageForm = () => {
         if (this.state.showMessageForm) {
-            return <MessageForm messaged_user_id={this.props.appointment[0].id} />
+            return <MessageForm prepend="Appointment Inquiry: " messaged_user_id={this.props.appointment[0].id} user_id={this.props.user.id} />
         }
     }
 

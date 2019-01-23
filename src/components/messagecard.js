@@ -32,7 +32,7 @@ class _MessageCard extends Component {
                     </Typography>
                     <Icon color="primary" style={{ fontSize: 40 }}>person</Icon>
                 </Card>
-                <Card elevation="10" style={{ padding: 15, margin: 30, width: 300, height: 400, "overflowY": 'auto' }} align="center">
+                <Card elevation="10" style={{ padding: 15, margin: 30, width: 300, maxHeight: 400, "overflowY": 'auto' }} align="center">
                     {this.createMessages()}
                     <MessageForm 
                         messaged_user_id={this.props.messaged_user.id} 

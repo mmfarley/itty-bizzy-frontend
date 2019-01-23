@@ -21,7 +21,13 @@ class _MessageForm extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
-        this.props.sendMessage(this.state)
+        if (this.props.prepend) {
+            let message = {...this.state}
+            message.content = `${this.props.prepend}${this.state.content}`
+            this.props.sendMessage(message)
+        }else{
+            this.props.sendMessage(this.state)
+        }
         this.setState({
             content: ''
         })

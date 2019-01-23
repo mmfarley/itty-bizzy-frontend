@@ -28,14 +28,14 @@ class _BizCard extends Component {
                 fullWidth
                 variant="contained"
                 color="primary">
-                Inquire about this Itty Bizzy
+                Contact this Itty Bizzy
             </Button></>
         }
     }
 
     renderMessageForm = () => {
         if ((this.props.biz.user_id !== this.props.user.id) && this.state.showMessageForm) {
-            return <MessageForm user_id={this.props.user.id} messaged_user_id={this.props.biz.user_id} />
+            return <MessageForm prepend="Business Inquiry: " user_id={this.props.user.id} messaged_user_id={this.props.biz.user_id} />
         }
     }
 
@@ -45,7 +45,7 @@ class _BizCard extends Component {
             <Grid item xs >
                 <Card elevation="10" style={{ padding: 15, margin: 30, width: 350, maxHeight: 600, "overflow-y": 'auto' }} align="center">
                     <CardContent >
-                        <Typography variant="h6" color="primary">Itty Bizzy: <br /> {this.props.biz.name}</Typography><br />
+                        <Typography variant="h6" color="primary">{this.props.biz.name}</Typography><br />
                         <Icon color="primary" style={{ fontSize: 60 }}>store</Icon><br /><br />
                         <Typography variant="h6" color="textSecondary">My Service: {this.props.biz.service_type}</Typography><br />
                         <Typography variant="h6" color="textSecondary">Rate: ${this.props.biz.hourly_rate}/hour</Typography><br />

@@ -33,7 +33,7 @@ class _FindBiz extends Component {
     generateBizCards = () => {
         if (this.props.bizzys) {
             return this.props.bizzys.map((biz) => {
-                if(biz.service_type.includes(this.state.search) || biz.name.includes(this.state.search)){
+                if (biz.service_type.toLowerCase().includes(this.state.search.toLowerCase()) || biz.name.toLowerCase().includes(this.state.search.toLowerCase())){
                 return <BizCard biz={biz} />
                 }
             })

@@ -56,7 +56,7 @@ class _MyBiz extends Component {
     }
 
     renderCalendar = () => {
-        if(this.props.clients && this.props.clients.length > 0){
+        if(this.props.appointments && this.props.my_biz && this.props.clients && this.props.clients.length > 0){
             return <MyCalendar />
         }
     }

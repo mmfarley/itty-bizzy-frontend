@@ -11,7 +11,6 @@ import {
     GET_MY_BIZ,
     GET_CLIENTS,
     GET_MESSAGED_USERS,
-    SIGNUP_USER,
     GET_APPOINTMENTS,
     GET_CLIENT_BUSINESSES
  } from '../actions/types';
@@ -26,9 +25,6 @@ export const reducer = function (currentState, action) {
             newState.currentUser = action.payload.user
             newState.loginError = null
             redirect('/user-dash')
-            break;
-        case SIGNUP_USER:
-            redirect('/login')
             break;
         case LOGOUT_USER:
             localStorage.clear()
