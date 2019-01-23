@@ -40,7 +40,7 @@ class _AppointmentCard extends Component {
                     <Typography color="textSecondary" variant="h6">
                         {this.props.appointment[0].name}
                         <br />
-                        <Icon color="primary" style={{ fontSize: 40 }}>date_range</Icon>
+                        <Icon color="primary" style={{ fontSize: 40 }}>perm_contact_calendar</Icon>
                         <br />
                         {this.props.appointment[1].date}
                     </Typography>

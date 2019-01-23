@@ -84,9 +84,9 @@ class _UserDash extends Component {
 
     renderFavoriteBizzys = () => {
         if(this.props.client_businesses){
-           return <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
+           return <Paper elevation="24" style={{ padding: 40, margin: 120 }} align="center">
                 <Typography color="primary" variant="h4">
-                    Itty Bizzys you use
+                    Itty Bizzys You Use
                 </Typography>
                 <br />
                 <Icon color="primary" style={{ fontSize: 50 }}>public</Icon>
@@ -102,7 +102,7 @@ class _UserDash extends Component {
         return (
             <div>
                 <NavBar />
-                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 120 }} align="center">
                 <br /><br />
                     <Typography color="primary" variant="h3">
                     Welcome to Itty Bizzy, {this.props.user.name}!
@@ -120,7 +120,7 @@ class _UserDash extends Component {
                         {this.generateBigIconLinks('/find-biz', 'search', 'Find Itty Bizzys')}
                     </Grid>
                 </Paper>
-                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <Paper style={{ padding: 40, margin: 120 }} align="center">
                     <Typography color="primary" variant="h4">
                         Your Itty Bizzy
                     </Typography>

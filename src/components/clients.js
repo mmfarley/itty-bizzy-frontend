@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { addClient } from '../state/actions/actions'
 import { ClientCard } from './clientcard'
-
+import Icon from '@material-ui/core/Icon';
 
 
 class _Clients extends Component {
@@ -47,7 +47,7 @@ class _Clients extends Component {
         if(this.props.messaged_users && this.props.messaged_users.length > 0){
             return <>
             <br /><br />
-                <Typography color="Primary" variant="h5">
+                <Typography color="Primary" variant="h4">
                     Potential Clients
                     </Typography>
                 <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
@@ -58,6 +58,8 @@ class _Clients extends Component {
                                     {messaged_user.name}
                                 </Typography>
                                 <br />
+                                <Icon color="primary" style={{ fontSize: 40 }}>mood</Icon>
+                                <br /><br />
                                 {this.renderAddClientButton(messaged_user)}
                             </Card>
                         </Grid>
@@ -70,17 +72,20 @@ class _Clients extends Component {
 
     renderClientsList = () => {
         if (this.props.clients && (this.props.clients.length > 0)) {
-            return <Paper style={{ padding: 40, margin: 30 }} align="center">
+            return <Paper style={{ padding: 40, margin: 120 }} align="center">
                 <Typography color="Primary" variant="h4">
                     Your Clients
-                    </Typography>
+                </Typography>
+                <br />
+                <Icon color="primary" style={{ fontSize: 60 }}>people</Icon>
+                <br /><br />
                 <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                     {this.props.clients.map((client) => (<ClientCard client={client} />))}
                 </Grid>
                 {this.renderSuggestedClients()}
             </Paper>
         }else{
-            return <Paper style={{ padding: 40, margin: 30 }} align="center">
+            return <Paper style={{ padding: 40, margin: 100 }} align="center">
                     <Typography color="Primary" variant="h4">
                         You do not have any clients
                     </Typography>

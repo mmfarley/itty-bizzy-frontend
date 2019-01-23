@@ -58,11 +58,11 @@ class _ClientCard extends Component {
         return (
             <Grid item xs >
                 <Card elevation="15" style={{ padding: 15, margin: 30, width: 300, maxHeight: 400 }} align="center">
-                    <Typography color="primary" variant="h4">
+                    <Typography color="primary" variant="h5">
                         {this.props.client[0].name}
                     </Typography>
                     <br />
-                    <Icon color="primary" style={{ fontSize: 60 }}>mood</Icon>
+                    <Icon color="primary" style={{ fontSize: 40 }}>mood</Icon>
                     <br /><br />
                     {this.renderRemoveClientButton(this.props.client)}
                     <br /><br />

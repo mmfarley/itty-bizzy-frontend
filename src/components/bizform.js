@@ -53,9 +53,9 @@ class _BizForm extends Component {
 
     editOrCreate = () => {
         if(this.props.biz){
-            return "Edit your Itty Bizzy"
+            return "Edit Your Itty Bizzy"
         }else{
-            return "Create your Itty Bizzy to get started"
+            return "Create Your Itty Bizzy to get Started"
         }
     }
 
@@ -81,7 +81,7 @@ class _BizForm extends Component {
                 </Typography>
                 <br />
                 <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon>
-                <Paper elevation="15" style={{ padding: 40, margin: 30,  }} align="center">
+                <Paper elevation="15" style={{ padding: 40, margin: 30, maxWidth: 600 }} align="center">
                     <form onSubmit={e => this.handleOnSubmit(e)}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>
