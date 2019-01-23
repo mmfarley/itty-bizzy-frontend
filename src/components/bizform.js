@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { deleteBiz } from '../state/actions/actions'
 import Icon from '@material-ui/core/Icon';
+import { Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
 
@@ -77,13 +78,13 @@ class _BizForm extends Component {
 
     render() {
         return (
-            <div>
-                <Typography color="Primary" variant="h4">
-                    {this.editOrCreate()}
-                </Typography>
-                <br />
-                <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon>
-                <Paper elevation="15" style={{ padding: 40, margin: 30, maxWidth: 900 }} align="center">
+            <Grid item >
+                <Paper elevation="24" style={{ padding: 30, margin: 10, maxWidth: 550 }} align="center">
+                    <Typography color="Primary" variant="h6">
+                        {this.editOrCreate()}
+                    </Typography>
+                    <br />
+                    <Icon color="primary" style={{ fontSize: 40 }}>edit</Icon>
                     <form onSubmit={e => this.handleOnSubmit(e)}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>
@@ -116,10 +117,9 @@ class _BizForm extends Component {
                             Done
                         </Button>
                     </form>
-                    <br />
                     {this.renderDeleteButton()}
                 </Paper>
-            </div>
+            </Grid>
         );
     }
 }

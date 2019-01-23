@@ -57,7 +57,6 @@ class _AppointmentForm extends Component {
    }
 
     render() {
-        console.log(this.props.date)
         return (
             <div>
                 <Card elevation="15" style={{ padding: 30, margin: 30, width: 400, height: 400 }} align="center">

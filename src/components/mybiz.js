@@ -13,6 +13,7 @@ import { getMessagedUsers } from '../state/actions/actions'
 import { getAppointments } from '../state/actions/actions'
 import { MyCalendar } from './mycalendar'
 import Icon from '@material-ui/core/Icon';
+import { Grid } from '@material-ui/core';
 
 
 class _MyBiz extends Component {
@@ -35,6 +36,18 @@ class _MyBiz extends Component {
     renderBizCard = () => {
         if(this.props.my_biz){
             return <BizCard biz={this.props.my_biz} />
+        }else{
+            return <BizCard biz={this.fakeBizExample()} />
+        }
+    }
+
+    fakeBizExample = () => {
+        return {
+            user_id: this.props.user.id,
+            name: "Let's Get Bizzy",
+            service_type: "Example",
+            hourly_rate: 25,
+            description: "This is where you'll give a brief background on your Itty Bizzy. How long you've been doing it, any specifics about your skills, etc."
         }
     }
 
@@ -74,10 +87,10 @@ class _MyBiz extends Component {
                     <br />
                     <Icon color="primary" style={{ fontSize: 50 }}>public</Icon>
                     <br />
-                    {this.renderBizCard()}
-                </Paper>
-                <Paper elevation="24" style={{ padding: 40, margin: 120 }} align="center">
-                    {this.renderBizForm()}
+                    <Grid container direction="row" justify="center" alignItems="flex-start" spacing={24} style={{ padding: 24 }} >
+                        {this.renderBizCard()}
+                        {this.renderBizForm()}
+                    </Grid>
                 </Paper>
                 {this.renderCalendar()}
                 {this.renderInvoiceAndClients()}

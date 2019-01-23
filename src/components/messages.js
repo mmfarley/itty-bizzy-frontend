@@ -19,7 +19,7 @@ class _Messages extends Component {
     }
 
     fetchNewMessages = () => {
-        setInterval(()=>this.props.getConversations(this.props.user.id))
+        setInterval(()=>this.props.getConversations(this.props.user.id), 1000)
     }
 
     generateMessageCards = () => {
