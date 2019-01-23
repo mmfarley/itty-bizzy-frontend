@@ -1,19 +1,19 @@
 import { redirect } from '../history'
 
-import { LOGIN_USER, 
+import {
+    LOGIN_USER,
     LOGOUT_USER,
     LOGIN_ERROR,
     GET_CONVERSATIONS,
-    MARK_AS_PAID,
     GET_INVOICES,
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
-    ADD_CLIENT,
     GET_CLIENTS,
-    SIGNUP_USER,
     GET_MESSAGED_USERS,
-    REMOVE_CLIENT
+    SIGNUP_USER,
+    GET_APPOINTMENTS,
+    GET_CLIENT_BUSINESSES
  } from '../actions/types';
 
 export const reducer = function (currentState, action) {
@@ -28,7 +28,6 @@ export const reducer = function (currentState, action) {
             redirect('/user-dash')
             break;
         case SIGNUP_USER:
-            console.log("SIGN_UP hit")
             redirect('/login')
             break;
         case LOGOUT_USER:
@@ -50,7 +49,6 @@ export const reducer = function (currentState, action) {
             newState.conversations = action.payload.conversations
             break;
         case GET_INVOICES:
-            // console.log("invoices", action.payload)
             if (action.payload.received_bills && action.payload.received_bills.length > 0){
                 newState.received_invoices = action.payload.received_bills
             }
@@ -58,34 +56,33 @@ export const reducer = function (currentState, action) {
                 newState.sent_invoices = action.payload.sent_bills
             }
             break;
-
         case GET_BIZZYS:
-            // console.log("GET_BIZZYS action.payload", action.payload)
             newState.bizzys = action.payload
             break;
         case GET_MY_BIZ:
-            console.log("GET_MY_BIZ action.payoad", action.payload)
             localStorage.setItem("myBiz", JSON.stringify(action.payload[0]))
             newState.my_biz = action.payload[0]
             break;
         case EDIT_BIZ:
-            console.log("EDIT_BIZ and MAKE_BIZ action.payload", action.payload)
             newState.my_biz = action.payload
             break;
-        case EDIT_BIZ:
-            console.log("DELETE_BIZ action.payload", action.payload)
-            newState.my_biz = null
-            break;
         case GET_CLIENTS:
-            console.log("GET_CLIENTS action.payoad", action.payload)
             localStorage.setItem("clients", JSON.stringify(action.payload))
             newState.clients = action.payload
             break;
         case GET_MESSAGED_USERS:
-            console.log("GET_MESSAGED_USERS action.payoad", action.payload)
             newState.messaged_users = action.payload
             break;
-
+        case GET_APPOINTMENTS:
+            localStorage.setItem("appointments", JSON.stringify(action.payload))
+            newState.appointments = action.payload
+            break;
+        case GET_CLIENT_BUSINESSES:
+            if(action.payload.length > 0){
+                newState.client_businesses = action.payload
+            }
+            break;
+            default: return newState
     }
     return newState
 }

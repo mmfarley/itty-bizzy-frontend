@@ -10,17 +10,8 @@ import { NavBar } from './navbar'
 
 class _Messages extends Component {
 
-    componentDidMount(){
-        this.updateMessages()
-    }
-
     componentWillMount() {
         this.props.getConversations(this.props.user.id)  
-    }
-
-    //CHANGE TO EVERY SECOND FOR PRESENTATION
-    updateMessages = () => {
-        setInterval(() => this.props.getConversations(this.props.user.id), 10000)
     }
 
     generateMessageCards = () => {
@@ -36,10 +27,10 @@ class _Messages extends Component {
         return (
             <div>
                 <NavBar />
-                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="5"style={{ padding: 40, margin: 30 }} align="center">
                     <br />
-                    <Typography color="primary" variant="h4">Messages</Typography><br />
-                    <Icon color="primary" style={{ fontSize: 60 }}>forum</Icon>
+                    <Typography color="primary" variant="h4">Messages</Typography><br /><br />
+                    <Icon color="primary" style={{ fontSize: 60 }}>forum</Icon><br /><br /><br />
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.generateMessageCards()}
                     </Grid>

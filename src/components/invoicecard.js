@@ -6,6 +6,7 @@ import { markAsPaid } from '../state/actions/actions'
 import { connect } from 'react-redux';
 import CardContent from '@material-ui/core/CardContent';
 import { MessageForm } from './messageform'
+import Icon from '@material-ui/core/Icon';
 
 
 class _InvoiceCard extends Component {
@@ -19,7 +20,7 @@ class _InvoiceCard extends Component {
     }
 
     renderMarkAsPaidButton = () => {
-        if(!this.props.invoice.is_paid && (this.props.invoice.user_id == this.props.user.id)){
+        if(!this.props.invoice.is_paid && (this.props.invoice.user_id === this.props.user.id)){
             return <><Button
                 onClick={() => this.handlePaidOnClick()}
                 fullWidth
@@ -47,18 +48,18 @@ class _InvoiceCard extends Component {
     }
 
     renderMessageForm = () => {
-        if ((this.props.invoice.billed_user_id == this.props.user.id) && this.state.showMessageForm) {
+        if ((this.props.invoice.billed_user_id === this.props.user.id) && this.state.showMessageForm) {
             return <MessageForm user_id={this.props.invoice.billed_user_id} messaged_user_id={this.props.invoice.user_id}/>
-        } else if ((this.props.invoice.user_id == this.props.user.id) && this.state.showMessageForm) {
+        } else if ((this.props.invoice.user_id === this.props.user.id) && this.state.showMessageForm) {
             return <MessageForm user_id={this.props.invoice.user_id} messaged_user_id={this.props.invoice.billed_user_id} />
         }
     }
 
     renderInvoiceNames = () => {
-        if (this.props.invoice.billed_user_id == this.props.user.id){
-            return <Typography variant="h6" color="primary">Sent by: <br /> {this.props.invoice.sender}</Typography>
-        } else if (this.props.invoice.user_id == this.props.user.id){
-            return <Typography variant="h6" color="primary">Sent to: <br /> {this.props.invoice.recipient}</Typography>
+        if (this.props.invoice.billed_user_id === this.props.user.id){
+            return <Typography variant="h5" color="primary">Sent by: <br /> {this.props.invoice.sender}</Typography>
+        } else if (this.props.invoice.user_id === this.props.user.id){
+            return <Typography variant="h5" color="primary">Sent to: <br /> {this.props.invoice.recipient}</Typography>
         }
     }
 
@@ -66,14 +67,15 @@ class _InvoiceCard extends Component {
     render() {
 
         return (
-            <Card style={{ padding: 15, margin: 30, width: 300, height: 425, "overflow-y": 'auto' }} align="center">
+            <Card elevation="10" style={{ padding: 15, margin: 30, width: 300, height: 425, "overflow-y": 'auto' }} align="center">
                 <CardContent>
                     {this.renderInvoiceNames()}
+                    <Icon color="primary" style={{ fontSize: 40 }}>credit_card</Icon>
                     <br />
                     <Typography variant="h6" color="textSecondary">Invoice ID: {this.props.invoice.id}</Typography>
                     <Typography variant="h6" color="textSecondary">Amount due: ${this.props.invoice.amount}</Typography>
                     <Typography variant="h6" color="textSecondary">Due date: {this.props.invoice.due_date}</Typography>
-                    <br />
+                    <br /><br />
                     {this.renderMarkAsPaidButton()}
                     <br /><br />
                     {this.renderInquireButton()}

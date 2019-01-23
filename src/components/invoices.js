@@ -4,9 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { InvoiceCard } from './invoicecard'
 import { connect } from 'react-redux';
+import Icon from '@material-ui/core/Icon';
 
 class _Invoices extends Component {
-//go throught coversations and get messaged users to add as clients
 
     generateInvoiceCards = (invoices) => {
         return invoices.map((invoice) => (
@@ -18,7 +18,7 @@ class _Invoices extends Component {
 
     invoiceHeaderType = () => {
         if (this.props.sent_invoices){
-            return "Invoices you have sent"
+            return "Unpaid Invoices"
         } else if (this.props.received_invoices){
             return "Your Invoices"
         }else{
@@ -38,10 +38,13 @@ class _Invoices extends Component {
 
         return (
             <div>
-                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="primary" variant="h4">
                     {this.invoiceHeaderType()}
                     </Typography>
+                    <br />
+                    <Icon color="primary" style={{ fontSize: 50 }}>receipt</Icon>
+                    <br />
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.renderInvoices()}
                     </Grid>

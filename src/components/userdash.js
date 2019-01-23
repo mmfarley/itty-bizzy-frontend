@@ -10,10 +10,12 @@ import { getInvoices } from '../state/actions/actions'
 import { getMyBiz } from '../state/actions/actions'
 import { getBizzys } from '../state/actions/actions'
 import { getClients } from '../state/actions/actions'
+import { getAppointments } from '../state/actions/actions'
 import {BizCard} from "./bizcard";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { NavBar } from './navbar'
+import { getClientBusinesses } from '../state/actions/actions'
 
 
 class _UserDash extends Component {
@@ -22,15 +24,17 @@ class _UserDash extends Component {
         this.props.getInvoices(this.props.user.id)
         this.props.getBizzys()
         this.props.getMyBiz(this.props.user.id)
+        this.props.getClientBusinesses(this.props.user.id)
         if(this.props.my_biz){
             this.props.getClients(this.props.my_biz.id)
+            this.props.getAppointments(this.props.my_biz.id)
         }  
     }
 
     generateBigIconLinks = (link, icon, text) => {
         return <>
         <Grid item xs>
-            <Paper onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30, width: 300 }}>
+                <Paper elevation="5" onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30, width: 300 }}>
                 <Icon color="primary" style={{ fontSize: 60 }}>{icon}</Icon>
                 <br /><br />
                 <Typography color="textSecondary" variant="h5" align="center">
@@ -63,7 +67,7 @@ class _UserDash extends Component {
     bizInfo = () => {
         return <>
             <Grid item xs>
-                <Card style={{ padding: 15, margin: 30, width: 350, maxHeight: 600 }} align="center">
+                <Card elevation="10" style={{ padding: 15, margin: 30, width: 350, maxHeight: 600 }} align="center">
                     <CardContent>
                         <div onClick={() => redirect('/my-biz')}>
                         <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon><br /><br />
@@ -78,19 +82,37 @@ class _UserDash extends Component {
         </>
     }
 
+    renderFavoriteBizzys = () => {
+        if(this.props.client_businesses){
+           return <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <Typography color="primary" variant="h4">
+                    Itty Bizzys you use
+                </Typography>
+                <br />
+                <Icon color="primary" style={{ fontSize: 50 }}>public</Icon>
+                <br />
+                <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
+                    {this.props.client_businesses.map(biz => (<BizCard biz={biz }/>))}
+                </Grid>
+            </Paper>
+        }
+    }
+
     render() {
-       console.log("my biz in user", this.props.my_biz)
         return (
             <div>
                 <NavBar />
-                <Paper style={{ padding: 40, margin: 30 }} align="center">
-                <br />
-                    <Typography color="primary" variant="h4">
+                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
+                <br /><br />
+                    <Typography color="primary" variant="h3">
                     Welcome to Itty Bizzy, {this.props.user.name}!
                     </Typography>
-                    <br />
+                    <br /><br />
+                    <Icon color="primary" style={{ fontSize: 60 }}>public</Icon>
+                    <br /><br />
                     <Typography variant="h6" color="textSecondary">
-                        You can create or edit your Itty Bizzy, view your messages, check invoices, or search for an Itty Bizzy near you!
+                        You can create or edit your Itty Bizzy, view your messages,<br />  create appointments, view appointments on your calendar,
+                        <br />  keep track of invoicing, or search for an Itty Bizzy near you!
                     </Typography>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.generateBigIconLinks('/my-biz', "store", 'My Itty Biz')}
@@ -102,12 +124,16 @@ class _UserDash extends Component {
                     <Typography color="primary" variant="h4">
                         Your Itty Bizzy
                     </Typography>
+                    <br />
+                    <Icon color="primary" style={{ fontSize: 50 }}>business_center</Icon>
+                    <br />
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.bizInfo()}
                         {this.renderMyBizCard()}
                     </Grid>
                 </Paper>
                 <Invoices currentUser={this.props.user} received_invoices={this.props.received_invoices} />
+                {this.renderFavoriteBizzys()}
             </div>
         );
     }
@@ -117,7 +143,8 @@ const mapStateToProps = (state) => ({
     user: state.currentUser,
     received_invoices: state.received_invoices,
     my_biz: state.my_biz,
-    bizzys: state.bizzys
+    bizzys: state.bizzys,
+    client_businesses: state.client_businesses
 })
 
-export const UserDash = connect(mapStateToProps, { getInvoices, getMyBiz, getBizzys, getClients })(_UserDash);
+export const UserDash = connect(mapStateToProps, { getInvoices, getMyBiz, getBizzys, getClients, getAppointments, getClientBusinesses })(_UserDash);

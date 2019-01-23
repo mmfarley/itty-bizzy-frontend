@@ -22,9 +22,11 @@ export const GET_MY_BIZ = 'GET_MY_BIZ'
 export const DELETE_BIZ = 'DELETE_BIZ'
 
 export const GET_CLIENTS = 'GET_CLIENTS'
-export const ADD_CLIENT = 'ADD_CLIENT'
-export const REMOVE_CLIENT = 'REMOVE_CLIENT'
 export const GET_MESSAGED_USERS = 'GET_MESSAGED_USERS'
+
+export const GET_APPOINTMENTS = 'GET_APPOINTMENTS'
+export const GET_CLIENT_BUSINESSES = 'GET_CLIENT_BUSINESSES'
+
 
 
 

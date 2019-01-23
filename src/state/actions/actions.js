@@ -3,19 +3,16 @@ import {
     LOGOUT_USER,
     LOGIN_ERROR,
     GET_CONVERSATIONS,
-    SEND_MESSAGE,
-    MARK_AS_PAID,
     GET_INVOICES,
-    SEND_INVOICE,
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
     DELETE_BIZ,
     GET_CLIENTS,
-    ADD_CLIENT,
     GET_MESSAGED_USERS,
     SIGNUP_USER,
-    REMOVE_CLIENT
+    GET_APPOINTMENTS,
+    GET_CLIENT_BUSINESSES
 } from "./types";
 
 const API = 'http://localhost:3000/api/v1/'
@@ -92,7 +89,7 @@ export const sendMessage = (message) => {
             body: JSON.stringify(message)
         })
             .then(resp => resp.json())
-            .then(message => dispatch({ type: SEND_MESSAGE, payload: message }))
+            .then(conversations => dispatch({ type: GET_CONVERSATIONS, payload: conversations }))
     }
 }
 
@@ -115,7 +112,6 @@ export const markAsPaid = (id, user_id) => {
     }
 }
 
-//make custom route for this. model after messages custom route
 export const getInvoices = (user_id) => {
     return function (dispatch) {
         fetch(`${API}bills/user/${user_id}`, {
@@ -273,5 +269,49 @@ export const getMessagedUsers = (user_id) => {
         })
             .then(resp => resp.json())
             .then(users => dispatch({ type: GET_MESSAGED_USERS, payload: users }))
+    }
+}
+
+export const getAppointments = (biz_id) => {
+    return function (dispatch) {
+        fetch(`${API}appointments/users/${biz_id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(appointments => dispatch({ type: GET_APPOINTMENTS, payload: appointments }))
+    }
+}
+
+export const setAppointment = (appointment_user_id, business_id, date) => {
+    return function (dispatch) {
+        fetch(`${API}appointments`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                appointment_user_id: appointment_user_id,
+                business_id: business_id,
+                date: date
+            })
+        })
+            .then(resp => resp.json())
+            .then(appointments => dispatch({ type: GET_APPOINTMENTS, payload: appointments }))
+    }
+}
+
+export const getClientBusinesses = (user_id) => {
+    return function (dispatch) {
+        fetch(`${API}clients/businesses/${user_id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(resp => resp.json())
+            .then(clientBusinesses => dispatch({ type: GET_CLIENT_BUSINESSES, payload: clientBusinesses }))
     }
 }

@@ -9,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { deleteBiz } from '../state/actions/actions'
+import Icon from '@material-ui/core/Icon';
 
 
 class _BizForm extends Component {
@@ -77,6 +78,8 @@ class _BizForm extends Component {
                 <Typography color="Primary" variant="h4">
                     {this.editOrCreate()}
                 </Typography>
+                <br />
+                <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon>
                 <form onSubmit={e => this.handleOnSubmit(e)}>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>

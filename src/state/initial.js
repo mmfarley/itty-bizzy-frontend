@@ -1,6 +1,7 @@
 let currentUser;
 let my_biz;
 let clients;
+let appointments;
 
 try{
     currentUser = JSON.parse(localStorage.getItem("user"))
@@ -20,8 +21,15 @@ try {
     my_biz = null
 }
 
+try {
+    appointments = JSON.parse(localStorage.getItem("appointments"))
+} catch (error) {
+    appointments = null
+}
+
 export const initialState = {
     currentUser,
     clients,
-    my_biz
+    my_biz,
+    appointments
 }

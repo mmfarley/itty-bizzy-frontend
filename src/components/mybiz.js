@@ -3,22 +3,16 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux'
 import {Invoices} from "./invoices";
-import Grid from '@material-ui/core/Grid';
 import { getInvoices } from '../state/actions/actions'
-import { getMyBiz } from '../state/actions/actions'
 import { BizCard } from "./bizcard";
 import { BizForm } from "./bizform";
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
 import { NavBar } from './navbar'
 import { getClients } from '../state/actions/actions'
-import { InvoiceForm } from "./invoiceform";
-import Card from '@material-ui/core/Card';
 import { Clients } from './clients'
 import { getMessagedUsers } from '../state/actions/actions'
+import { getAppointments } from '../state/actions/actions'
+import { MyCalendar } from './mycalendar'
+import Icon from '@material-ui/core/Icon';
 
 
 class _MyBiz extends Component {
@@ -34,6 +28,7 @@ class _MyBiz extends Component {
         this.props.getMessagedUsers(this.props.user.id)
         if(this.props.my_biz){
             this.props.getClients(this.props.my_biz.id)
+            this.props.getAppointments(this.props.my_biz.id)
         }
     }
 
@@ -54,28 +49,37 @@ class _MyBiz extends Component {
     renderInvoiceAndClients = () => {
         if(this.props.my_biz){
             return <>
-                <Invoices sent_invoices={this.props.sent_invoices} />
                 <Clients messaged_users={this.props.messaged_users} />
+                <Invoices sent_invoices={this.props.sent_invoices} />
             </>
         }
     }
 
+    renderCalendar = () => {
+        if(this.props.clients && this.props.clients.length > 0){
+            return <MyCalendar />
+        }
+    }
    
     render() {
 
         return (
             <div>
                 <NavBar />
-                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
                     <br />
                     <Typography color="Primary" variant="h4">
                         Your Itty Bizzy
-                    </Typography><br />
+                    </Typography>
+                    <br />
+                    <Icon color="primary" style={{ fontSize: 50 }}>public</Icon>
+                    <br />
                     {this.renderBizCard()}
                 </Paper>
-                <Paper style={{ padding: 40, margin: 30 }} align="center">
+                <Paper elevation="5" style={{ padding: 40, margin: 30 }} align="center">
                     {this.renderBizForm()}
                 </Paper>
+                {this.renderCalendar()}
                 {this.renderInvoiceAndClients()}
             </div>
         );
@@ -87,7 +91,8 @@ const mapStateToProps = (state) => ({
     my_biz: state.my_biz,
     sent_invoices: state.sent_invoices,
     clients: state.clients,
-    messaged_users: state.messaged_users
+    messaged_users: state.messaged_users,
+    appointments: state.appointments
 })
 
-export const MyBiz = connect(mapStateToProps, {getInvoices, getClients, getMessagedUsers })(_MyBiz);
+export const MyBiz = connect(mapStateToProps, {getInvoices, getClients, getMessagedUsers, getAppointments })(_MyBiz);

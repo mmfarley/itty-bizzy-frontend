@@ -51,7 +51,7 @@ class _Login extends Component {
         return (
             <div align="center">
                 {this.errorBox()}
-                <Paper style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
+                <Paper elevation="10" style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
                     <Avatar >
                         <LockOutlinedIcon />
                     </Avatar>

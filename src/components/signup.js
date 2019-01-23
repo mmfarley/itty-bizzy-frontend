@@ -11,7 +11,6 @@ import React, { Component } from "react";
 import { signup } from '../state/actions/actions'
 import { login } from '../state/actions/actions'
 import { connect } from 'react-redux';
-import history from "../state/history";
 
 
 class _Signup extends Component {
@@ -51,7 +50,7 @@ class _Signup extends Component {
         return (
             <div align="center">
                 {this.errorBox()}
-                <Paper style={{ padding: 40, margin: 100, maxWidth: 420 }} align="center">
+                <Paper elevation="10" style={{ padding: 40, margin: 100, maxWidth: 420 }} align="center">
                     <Avatar >
                         <AddIcon />
                     </Avatar>
