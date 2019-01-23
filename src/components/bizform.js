@@ -61,14 +61,16 @@ class _BizForm extends Component {
 
     renderDeleteButton = () => {
         if (this.props.biz) {
-            return <Button
+            return <>
+                <br /><br />
+                <Button
                 onClick={()=> this.props.deleteBiz(this.props.biz.id)}
                 fullWidth
-                variant="contained"
+                variant="outlined"
                 color="primary"
             >
                 Delete My Itty Bizzy
-                    </Button>
+                    </Button></>
         }
     }
 
@@ -81,7 +83,7 @@ class _BizForm extends Component {
                 </Typography>
                 <br />
                 <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon>
-                <Paper elevation="15" style={{ padding: 40, margin: 30, maxWidth: 600 }} align="center">
+                <Paper elevation="15" style={{ padding: 40, margin: 30, maxWidth: 900 }} align="center">
                     <form onSubmit={e => this.handleOnSubmit(e)}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="name">Name of your Itty Bizzy</InputLabel>

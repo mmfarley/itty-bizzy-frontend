@@ -14,10 +14,18 @@ class _Messages extends Component {
         this.props.getConversations(this.props.user.id)  
     }
 
+    componentDidMount() {
+        this.fetchNewMessages()
+    }
+
+    fetchNewMessages = () => {
+        setInterval(()=>this.props.getConversations(this.props.user.id))
+    }
+
     generateMessageCards = () => {
         if (this.props.conversations){
         return this.props.conversations.map((conversation) => (
-            <Grid item xs={12} sm={6} lg={4} xl={3}>
+            <Grid item >
                 <MessageCard conversation={conversation.conversation} messaged_user={conversation.messaged_user}/>
             </Grid>
         ))}

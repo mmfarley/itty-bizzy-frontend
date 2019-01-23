@@ -47,7 +47,7 @@ class _ClientCard extends Component {
         return <Button
             onClick={() => this.props.removeClient(client[1], this.props.my_biz.id)}
             fullWidth
-            variant="contained"
+            variant="outlined"
             color="primary">
             Remove Client
                 </Button>
@@ -56,7 +56,7 @@ class _ClientCard extends Component {
     render() {
 
         return (
-            <Grid item xs >
+            <Grid item >
                 <Card elevation="15" style={{ padding: 15, margin: 30, width: 300, maxHeight: 400 }} align="center">
                     <Typography color="primary" variant="h5">
                         {this.props.client[0].name}

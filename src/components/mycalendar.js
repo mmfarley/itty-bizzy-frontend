@@ -61,7 +61,7 @@ class _MyCalendar extends Component {
                     <br />
                     <br />
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
-                        <Grid item xs >
+                        <Grid item >
                             <Card elevation="15" style={{ padding: 17, margin: 30, width: 400, height: 400 }} align="center">
                                 <Typography color="primary" variant="h6" align="center">
                                     Click a date to see your appointments<br />or to schedule an appointment
@@ -74,13 +74,13 @@ class _MyCalendar extends Component {
                                     onChange={this.onChange}
                                     value={this.state.date}
                                 /><br />
-                                <Typography color="textSecondary" variant="h6" align="center">
+                                <Typography color="textSecondary"  align="center">
                                     Selected date: {this.state.date.getMonth() + 1}/{this.state.date.getDate()}/{this.state.date.getFullYear()}
                                     <br /><br />
                                 </Typography>
                             </Card>
                         </Grid>
-                        <Grid item xs >
+                        <Grid item >
                             <AppointmentForm date={this.selectedDate()} />
                         </Grid>
                     </Grid>

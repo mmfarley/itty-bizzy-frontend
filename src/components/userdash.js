@@ -33,8 +33,8 @@ class _UserDash extends Component {
 
     generateBigIconLinks = (link, icon, text) => {
         return <>
-        <Grid item xs>
-                <Paper elevation="10" onClick={() => { redirect(link) }} style={{ padding: 40, margin: 30, width: 300 }}>
+        <Grid item >
+                <Paper elevation="10" onClick={() => { redirect(link) }} style={{ padding: 40, margin: 10, width: 250 }}>
                 <Icon color="primary" style={{ fontSize: 60 }}>{icon}</Icon>
                 <br /><br />
                 <Typography color="textSecondary" variant="h5" align="center">
@@ -66,13 +66,13 @@ class _UserDash extends Component {
     
     bizInfo = () => {
         return <>
-            <Grid item xs>
+            <Grid item >
                 <Card elevation="15" style={{ padding: 15, margin: 30, width: 350, maxHeight: 600 }} align="center">
                     <CardContent>
                         <div onClick={() => redirect('/my-biz')}>
                         <Icon color="primary" style={{ fontSize: 60 }}>edit</Icon><br /><br />
                         </div>
-                        <Typography paragraph color="textSecondary" variant="h5">
+                        <Typography paragraph color="textSecondary" variant="h6">
                             The adjacent card shows how your Itty Bizzy is displayed in a search.<br /><br />
                             If you would like to add, edit, or delete your Itty Bizzy, you can click on the edit icon above and you will be taken to your Itty Bizzy page.
                         </Typography>

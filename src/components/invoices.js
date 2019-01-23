@@ -10,7 +10,7 @@ class _Invoices extends Component {
 
     generateInvoiceCards = (invoices) => {
         return invoices.map((invoice) => (
-            <Grid item xs>
+            <Grid item >
                 <InvoiceCard invoice={invoice}/>
             </Grid>
         ))

@@ -24,7 +24,7 @@ class _InvoiceCard extends Component {
             return <><Button
                 onClick={() => this.handlePaidOnClick()}
                 fullWidth
-                variant="contained"
+                variant="outlined"
                 color="primary">
                 Mark As Paid
             </Button></>
