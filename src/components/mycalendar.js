@@ -49,9 +49,9 @@ class _MyCalendar extends Component {
         }
     }
 
-    renderAppointmentsNext7Days = () => {
-        return this.props.appointments.map(appt => (<AppointmentCard appointment={appt} />))
-    }
+    // renderAppointmentsNext7Days = () => {
+    //     return this.props.appointments.map(appt => (<AppointmentCard appointment={appt} />))
+    // }
 
     render() {
         return (
@@ -95,14 +95,14 @@ class _MyCalendar extends Component {
                         {this.mapAppointmentsToDate()}
                     </Grid>
                 </Paper>
-                <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
+                {/* <Paper elevation="24" style={{ padding: 40, margin: 30 }} align="center">
                     <Typography color="Primary" variant="h4">
                         Appointments in the next week
                     </Typography>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
                         {this.renderAppointmentsNext7Days()}
                     </Grid>
-                </Paper>
+                </Paper> */}
             </div>
         );
     }
