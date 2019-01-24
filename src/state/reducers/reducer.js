@@ -16,7 +16,7 @@ import {
  } from '../actions/types';
 
 export const reducer = function (currentState, action) {
-    const newState = { ...currentState }
+    let newState = { ...currentState }
 
     switch (action.type) {
         case LOGIN_USER:
@@ -28,14 +28,7 @@ export const reducer = function (currentState, action) {
             break;
         case LOGOUT_USER:
             localStorage.clear()
-            newState.currentUser = null
-            newState.conversations = null
-            newState.received_invoices = null
-            newState.sent_invoices = null
-            newState.bizzys = null
-            newState.my_biz = null
-            newState.clients = null
-            newState.messaged_users = null
+            newState = {}
             break;
         case LOGIN_ERROR:
             newState.loginError = action.payload.error

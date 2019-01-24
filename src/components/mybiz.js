@@ -62,8 +62,8 @@ class _MyBiz extends Component {
     renderInvoiceAndClients = () => {
         if(this.props.my_biz){
             return <>
-                <Clients messaged_users={this.props.messaged_users} />
                 <Invoices sent_invoices={this.props.sent_invoices} />
+                <Clients messaged_users={this.props.messaged_users} />
             </>
         }
     }

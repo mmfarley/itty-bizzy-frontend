@@ -21,8 +21,6 @@ class _Invoices extends Component {
             return "Unpaid Invoices"
         } else if (this.props.received_invoices){
             return "Your Invoices"
-        }else{
-            return "You have no invoices"
         }
     }
 
@@ -34,21 +32,27 @@ class _Invoices extends Component {
         }
     }
 
+    showInvoices = () => {
+        if (this.props.sent_invoices || this.props.received_invoices){
+           return <Paper elevation="24" style={{ padding: 40, margin: 120 }} align="center">
+                <Typography color="primary" variant="h4">
+                    {this.invoiceHeaderType()}
+                </Typography>
+                <br />
+                <Icon color="primary" style={{ fontSize: 50 }}>receipt</Icon>
+                <br />
+                <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
+                    {this.renderInvoices()}
+                </Grid>
+            </Paper>
+        }
+    }
+
     render() {
 
         return (
             <div>
-                <Paper elevation="24" style={{ padding: 40, margin: 120 }} align="center">
-                    <Typography color="primary" variant="h4">
-                    {this.invoiceHeaderType()}
-                    </Typography>
-                    <br />
-                    <Icon color="primary" style={{ fontSize: 50 }}>receipt</Icon>
-                    <br />
-                    <Grid container direction="row" justify="center" alignItems="center" spacing={24} style={{ padding: 24 }} >
-                        {this.renderInvoices()}
-                    </Grid>
-                </Paper>
+                {this.showInvoices()}
             </div>
         );
     }
