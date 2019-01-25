@@ -14,9 +14,9 @@ import Icon from '@material-ui/core/Icon';
 
 class _Clients extends Component {
 
-    state={
-        showAddClientButton: true
-    }
+    // state={
+    //     showAddClientButton: true
+    // }
 
     componentWillMount(){
         if(this.props.my_biz){
@@ -25,22 +25,8 @@ class _Clients extends Component {
         }
     }
 
-    
-    renderAddClientButton = (messaged_user) => {
-        if(this.state.showAddClientButton){
-            return <Button
-                onClick={() => this.handleAddClientButtonClick(messaged_user.id)}
-                fullWidth
-                variant="contained"
-                color="primary">
-                Add Client
-            </Button>
-        }  
-    }
-
     handleAddClientButtonClick = (client_user_id) => {
-        this.setState({showAddClientButton: false})
-        this.props.addClient({ client_user_id: client_user_id, business_id: this.props.my_biz.id })
+        this.props.addClient({ client_user_id: client_user_id, business_id: this.props.my_biz.id, user_id: this.props.user.id })
     }
 
     renderSuggestedClients = () => {
@@ -60,7 +46,13 @@ class _Clients extends Component {
                                 <br />
                                 <Icon color="primary" style={{ fontSize: 40 }}>mood</Icon>
                                 <br /><br />
-                                {this.renderAddClientButton(messaged_user)}
+                                <Button
+                                    onClick={() => this.handleAddClientButtonClick(messaged_user.id)}
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary">
+                                    Add Client
+                                </Button>
                             </Card>
                         </Grid>
                     }

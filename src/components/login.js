@@ -47,7 +47,7 @@ class _Login extends Component {
         return (
             <div align="center">
                 {this.errorBox()}
-                <Paper elevation="24" style={{ padding: 40, margin: 100, maxWidth: 420}} align="center">
+                <Paper elevation="24" style={{ padding: 40, margin: 250, maxWidth: 420}} align="center">
                     <Icon color="primary" style={{ fontSize: 50 }}>lock</Icon>
                     <br /><br />
                     <Typography color="textSecondary" align="center" component="h1" variant="h5">

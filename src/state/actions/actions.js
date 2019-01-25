@@ -11,7 +11,8 @@ import {
     GET_CLIENTS,
     GET_MESSAGED_USERS,
     GET_APPOINTMENTS,
-    GET_CLIENT_BUSINESSES
+    GET_CLIENT_BUSINESSES,
+    ADD_CLIENT
 } from "./types";
 
 const API = 'http://localhost:3000/api/v1/'
@@ -236,30 +237,30 @@ export const addClient = (client) => {
             body: JSON.stringify(client)
         })
             .then(resp => resp.json())
-            .then(clients => dispatch({ type: GET_CLIENTS, payload: clients }))
+            .then(clients => {
+                dispatch({ type: ADD_CLIENT, payload: clients })
+            })
     }
 }
 
-export const removeClient = (client_id, business_id) => {
+export const removeClient = (client) => {
     return function (dispatch) {
-        fetch(`${API}clients/${client_id}`, {
+        fetch(`${API}clients/${client.client_user_id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({
-                id: client_id,
-                business_id: business_id
-            })
+            body: JSON.stringify(client)
         })
             .then(resp => resp.json())
-            .then(clients => dispatch({ type: GET_CLIENTS, payload: clients }))
+            .then(clients => dispatch({ type: ADD_CLIENT, payload: clients }))
     }
 }
 
 export const getMessagedUsers = (user_id) => {
+    console.log("in getmessagesuers")
     return function (dispatch) {
         fetch(`${API}messages/messaged-users/${user_id}`, {
             headers: {

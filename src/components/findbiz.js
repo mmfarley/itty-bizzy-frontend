@@ -25,9 +25,6 @@ class _FindBiz extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        //write function that takes in state 
-        //when changed an filters by service_type
-
     }
 
     generateBizCards = () => {

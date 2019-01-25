@@ -45,7 +45,7 @@ class _ClientCard extends Component {
 
     renderRemoveClientButton = (client) => {
         return <Button
-            onClick={() => this.props.removeClient(client[1], this.props.my_biz.id)}
+            onClick={() => this.props.removeClient({client_user_id: client[1], business_id: this.props.my_biz.id, user_id: this.props.user.id})}
             fullWidth
             variant="outlined"
             color="primary">

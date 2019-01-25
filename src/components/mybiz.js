@@ -86,7 +86,7 @@ class _MyBiz extends Component {
                     </Typography>
                     <br />
                     <Icon color="primary" style={{ fontSize: 50 }}>public</Icon>
-                    <br />
+                    <br /><br />
                     <Grid container direction="row" justify="center" alignItems="flex-start" spacing={24} style={{ padding: 24 }} >
                         {this.renderBizCard()}
                         {this.renderBizForm()}

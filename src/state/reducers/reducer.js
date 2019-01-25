@@ -9,10 +9,12 @@ import {
     EDIT_BIZ,
     GET_BIZZYS,
     GET_MY_BIZ,
+    DELETE_BIZ,
     GET_CLIENTS,
     GET_MESSAGED_USERS,
     GET_APPOINTMENTS,
-    GET_CLIENT_BUSINESSES
+    GET_CLIENT_BUSINESSES,
+    ADD_CLIENT
  } from '../actions/types';
 
 export const reducer = function (currentState, action) {
@@ -48,6 +50,9 @@ export const reducer = function (currentState, action) {
         case GET_BIZZYS:
             newState.bizzys = action.payload
             break;
+        case GET_BIZZYS:
+            newState.my_biz = null
+            break;
         case GET_MY_BIZ:
             localStorage.setItem("myBiz", JSON.stringify(action.payload[0]))
             newState.my_biz = action.payload[0]
@@ -58,6 +63,11 @@ export const reducer = function (currentState, action) {
         case GET_CLIENTS:
             localStorage.setItem("clients", JSON.stringify(action.payload))
             newState.clients = action.payload
+            break;
+        case ADD_CLIENT:
+            localStorage.setItem("clients", JSON.stringify(action.payload.client_users))
+            newState.clients = action.payload.client_users
+            newState.messaged_users = action.payload.messaged_users
             break;
         case GET_MESSAGED_USERS:
             newState.messaged_users = action.payload
